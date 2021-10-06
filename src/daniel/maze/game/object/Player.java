@@ -1,4 +1,4 @@
-package object;
+package daniel.maze.game.object;
 
 public class Player {
 

@@ -1,4 +1,4 @@
-package object;
+package daniel.maze.game.object;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +15,7 @@ public class Maze {
     private BufferedReader input;
 
     public Maze() throws Exception {
+        pixelSize = 40;
         File root = new File(System.getProperty("user.dir"));
         input = new BufferedReader(new FileReader(new File(root, file)));
 
@@ -27,8 +28,24 @@ public class Maze {
             map[i] = input.readLine().toCharArray();
         }
 
-
-
         System.out.printf("[y: %s, x: %s] \n", height, width);
     }
+
+    public char[][] getMap() {
+        return map;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getPixelSize() {
+        return pixelSize;
+    }
+
+    
 }

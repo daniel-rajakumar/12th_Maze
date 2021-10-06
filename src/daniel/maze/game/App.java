@@ -1,0 +1,20 @@
+package daniel.maze.game;
+
+import daniel.maze.game.graphics.*;
+import daniel.maze.game.object.*;
+
+public class App {
+
+    public static final boolean DEBUG = false;
+    public static Maze maze;
+    public static Panel panel;
+
+    App() throws Exception {
+        maze = new Maze(); 
+        panel = new Panel();
+    }
+
+    public static void main(String[] args) throws Exception {
+        new App();
+    }
+}
