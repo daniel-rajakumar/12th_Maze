@@ -1,7 +1,6 @@
 package daniel.maze.game.graphics;
 
 import javax.imageio.ImageIO;
-import javax.imageio.stream.ImageInputStream;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -80,32 +79,6 @@ public class Panel extends JPanel {
                     }
             }
         }
-        /*
-		// DRAW MAZE
-		g2.setColor(Color.GRAY);
-		for(int c=0;c<map[0].length;c++)
-		for(int r=0;r<map.length;r++){
-			if (maze[r][c] == 'E'){
-				//EXPLORER
-				g2.setColor(Color.RED);
-				g2.fillRect(c*size+size,r*size+size,size,size);
-				g2.setColor(Color.GRAY);
-			}
-			else if (maze[r][c] == 'F'){
-				//SET FINISH OR GOAL SQUARE
-			}
-			else if(maze[r][c]==' ') // OPEN SQUARE GRAY
-				g2.fillRect(c*size+size,r*size+size,size,size);
-			else // BLOCKED SQUARE GRAY OUTLINE
-				g2.drawRect(c*size+size,r*size+size,size,size);
-		}
-		if (App.DEBUG){ // PRINT EXTRA INFO TO HELP DEBUG
-			g2.setColor(Color.YELLOW);
-			g2.drawString("Debug message here",40, numRows*size+2*size);
-			g2.setColor(Color.GRAY);
-		}
-	}
-    */
+
     }
-    
 }
