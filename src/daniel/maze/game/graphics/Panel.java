@@ -32,6 +32,7 @@ public class Panel extends JPanel {
 
         graphics.setColor(Color.GRAY);
 
+
         new Render(graphics);
     }
 }
