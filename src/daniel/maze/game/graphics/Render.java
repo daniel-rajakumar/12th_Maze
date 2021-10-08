@@ -18,6 +18,7 @@ import daniel.maze.game.object.Player;
 import daniel.maze.game.object.Water;
 
 public class Render {
+
     public static Graphics graphics;
 
     int img_x;
@@ -48,14 +49,21 @@ public class Render {
 
     }
 
+    public Player player;
+
     public void renderObjects(int x, int y) throws IOException {
         switch (App.maze.getMap()[y][x]) {
-            case 'E': new Player(img_x, img_y, img_width, img_height); break;
+            case 'E': player = new Player(img_x, img_y, img_width, img_height); break;
             case 'F': new Finish(img_x, img_y, img_width, img_height); break;
             case 'D': new Enemy(img_x, img_y, img_width, img_height); break;
             case ' ': new Grass(img_x, img_y, img_width, img_height); break;
             default : new Water(img_x, img_y, img_width, img_height);
         }
+    }
+
+
+    public Player getPlayer() {
+        return player;
     }
 
 }

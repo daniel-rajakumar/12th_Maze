@@ -20,7 +20,7 @@ public class Water {
     private int img_x, img_y, img_width, img_height;
 
 
-    public Water(int img_x, int img_y, int img_width, int img_height) throws IOException{
+    public Water(int img_x, int img_y, int img_width, int img_height) throws IOException {
         this.img_x = img_x;
         this.img_y = img_y;
         this.img_width = img_width;
