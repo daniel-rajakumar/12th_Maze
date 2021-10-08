@@ -13,7 +13,7 @@ import daniel.maze.game.App;
 import daniel.maze.game.graphics.*;
 import daniel.maze.game.object.Enemy;
 import daniel.maze.game.object.Finish;
-import daniel.maze.game.object.Path;
+import daniel.maze.game.object.Grass;
 import daniel.maze.game.object.Player;
 import daniel.maze.game.object.Water;
 
@@ -22,8 +22,8 @@ public class Render {
 
     int img_x;
     int img_y;
-    int img_width = App.maze.getPixelSize();
-    int img_height = App.maze.getPixelSize();
+    int img_width;
+    int img_height;
 
     Render(Graphics graphics) {
         this.graphics = graphics;
@@ -39,8 +39,10 @@ public class Render {
 
                 img_x = (x * App.maze.getPixelSize()) + App.maze.getPixelSize();
                 img_y = (y * App.maze.getPixelSize()) + App.maze.getPixelSize(); 
-                renderObjects(x, y);
+                img_width = App.maze.getPixelSize();
+                img_height = App.maze.getPixelSize();
 
+                renderObjects(x, y);
             }
         }
 
@@ -51,10 +53,9 @@ public class Render {
             case 'E': new Player(img_x, img_y, img_width, img_height); break;
             case 'F': new Finish(img_x, img_y, img_width, img_height); break;
             case 'D': new Enemy(img_x, img_y, img_width, img_height); break;
-            case ' ': new Path(img_x, img_y, img_width, img_height); break;
+            case ' ': new Grass(img_x, img_y, img_width, img_height); break;
             default : new Water(img_x, img_y, img_width, img_height);
         }
     }
-
 
 }

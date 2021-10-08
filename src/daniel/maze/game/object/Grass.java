@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 
-public class Path {
+public class Grass {
 
     private BufferedImage image;
     private int x, y;
@@ -20,7 +20,7 @@ public class Path {
     private int img_x, img_y, img_width, img_height;
 
 
-    public Path(int img_x, int img_y, int img_width, int img_height) throws IOException{
+    public Grass(int img_x, int img_y, int img_width, int img_height) throws IOException{
         this.img_x = img_x;
         this.img_y = img_y;
         this.img_width = img_width;
