@@ -12,11 +12,7 @@ import daniel.maze.game.graphics.Render;
 
 public class Enemy {
 
-    private BufferedImage image;
-    private int x, y;
-    private int direction;
-    private int steps, totalSteps;
-    private boolean didWin, didLose;
+    private BufferedImage image_1, image_2;
     private int img_x, img_y, img_width, img_height;
 
 
@@ -29,8 +25,8 @@ public class Enemy {
     }
 
     public void test() throws IOException {
-        BufferedImage image_1 = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
-        BufferedImage image_2 = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
+        image_1 = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
+        image_2 = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
         Render.graphics.drawImage(image_1, img_x, img_y, img_width, img_height, null);
         Render.graphics.drawImage(image_2, img_x, img_y, img_width, img_height, null);
     }

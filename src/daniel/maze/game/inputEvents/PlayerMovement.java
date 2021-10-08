@@ -14,15 +14,15 @@ public class PlayerMovement implements KeyListener  {
     int dir = 0;
 
     public void keyPressed(KeyEvent arg0) {
-        System.out.println("hello world");
+        // System.out.println("hello world");
 
-        try {
-            Panel.render.getPlayer().setDirection(++dir%4);
-            Panel.render.getPlayer().turn();
+        // try {
+        //     Panel.render.getPlayer().setDirection(++dir%4);
+        //     Panel.render.getPlayer().turn();
 
-        } catch (IOException e) { e.printStackTrace(); }
+        // } catch (IOException e) { e.printStackTrace(); }
 
-        App.panel._repaint();
+        // App.panel._repaint();
     }
 
     public void keyReleased(KeyEvent arg0) { }

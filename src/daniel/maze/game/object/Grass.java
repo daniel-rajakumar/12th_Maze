@@ -13,10 +13,6 @@ import daniel.maze.game.graphics.Render;
 public class Grass {
 
     private BufferedImage image;
-    private int x, y;
-    private int direction;
-    private int steps, totalSteps;
-    private boolean didWin, didLose;
     private int img_x, img_y, img_width, img_height;
 
 
@@ -29,7 +25,7 @@ public class Grass {
     }
 
     public void test() throws IOException {
-        BufferedImage image = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
+        image = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
         Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
     }
 

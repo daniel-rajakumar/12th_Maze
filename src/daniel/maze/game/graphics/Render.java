@@ -1,6 +1,5 @@
 package daniel.maze.game.graphics;
 
-import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -19,16 +18,14 @@ import daniel.maze.game.object.Water;
 
 public class Render {
 
-    public static Graphics graphics;
+    public static Graphics2D graphics;
 
     int img_x;
     int img_y;
     int img_width;
     int img_height;
 
-    Render(Graphics graphics) {
-        this.graphics = graphics;
-
+    Render() {
         try {
             renderLevel();
         } catch (IOException e) { e.printStackTrace(); }
