@@ -46,7 +46,7 @@ public class Render {
 
     }
 
-    public Player player;
+    private Player player;
 
     public void renderObjects(int x, int y) throws IOException {
         switch (App.maze.getMap()[y][x]) {

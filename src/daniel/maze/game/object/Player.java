@@ -15,10 +15,10 @@ public class Player {
 
     private BufferedImage image;
     private int x, y;
-    public static int direction = 0;
     private int steps, totalSteps;
     private boolean didWin, didLose;
     private int img_x, img_y, img_width, img_height;
+    private int direction;
 
 
     public Player(int img_x, int img_y, int img_width, int img_height) throws IOException {
@@ -32,6 +32,9 @@ public class Player {
         didLose = false;
         steps = 0;
         totalSteps = 0;
+        direction = 0;
+
+        System.out.println("hello");
 
         draw();
     }
@@ -41,7 +44,7 @@ public class Player {
         Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
 
 
-        turn(++direction%4);
+        // turn(++direction%4);
     }
 
     public void turn(int dir) throws IOException {
@@ -78,6 +81,11 @@ public class Player {
     public void setDirection(int direction) {
         this.direction = direction;
     }
+
+    public int getDirection() {
+        return direction;
+    }
+
 
 
 }
