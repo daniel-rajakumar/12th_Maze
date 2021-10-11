@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Panel extends JPanel implements KeyListener {
+public class Panel extends JPanel  {
     private JFrame frame;
     public static Render render;
 
@@ -23,8 +23,7 @@ public class Panel extends JPanel implements KeyListener {
         frame.setSize(1150, 600);
         frame.add(this);
         frame.setResizable(false);
-        // frame.addKeyListener(new PlayerMovement());
-        frame.addKeyListener(this);
+        frame.addKeyListener(new PlayerMovement());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
@@ -43,30 +42,7 @@ public class Panel extends JPanel implements KeyListener {
 
     }
 
-    @Override
-    public void keyPressed(KeyEvent arg0) {
-        
-        if (arg0.getKeyCode() == 37){
-            if (--Player.direction < 0){
-                Player.direction = 0;
-            }
-            System.out.println("hello");
-        }
-
-
-
-        repaint();
-    }
-
-    @Override
-    public void keyReleased(KeyEvent arg0) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void keyTyped(KeyEvent arg0) {
-        // TODO Auto-generated method stub
-        
+    public void repaint(){
+        super.repaint();
     }
 }

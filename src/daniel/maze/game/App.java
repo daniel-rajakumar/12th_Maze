@@ -1,6 +1,7 @@
 package daniel.maze.game;
 
 import daniel.maze.game.graphics.*;
+import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.*;
 
 public class App {

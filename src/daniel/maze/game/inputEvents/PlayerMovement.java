@@ -6,7 +6,7 @@ import java.io.IOException;
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Panel;
 import daniel.maze.game.graphics.Render;
-import daniel.maze.game.object.Maze;
+import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.Player;
 
 public class PlayerMovement implements KeyListener  {
@@ -14,15 +14,17 @@ public class PlayerMovement implements KeyListener  {
     int dir = 0;
 
     public void keyPressed(KeyEvent arg0) {
-        // System.out.println("hello world");
+        System.out.println("hello world");
 
-        // try {
-        //     Panel.render.getPlayer().setDirection(++dir%4);
-        //     Panel.render.getPlayer().turn();
 
-        // } catch (IOException e) { e.printStackTrace(); }
+        if (arg0.getKeyCode() == 37){
+            if (--Player.direction < 0){
+                Player.direction = 0;
+            }
+            System.out.println("hello");
+        }
 
-        // App.panel._repaint();
+        App.panel.repaint();
     }
 
     public void keyReleased(KeyEvent arg0) { }

@@ -1,4 +1,4 @@
-package daniel.maze.game.object;
+package daniel.maze.game.maze;
 
 import java.io.BufferedReader;
 import java.io.File;
