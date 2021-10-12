@@ -20,7 +20,7 @@ public class Panel extends JPanel  {
 
     public Panel(){
         frame = new JFrame("A maze program");
-        frame.setSize(1150, 600);
+        frame.setSize(1150, 800);
         frame.add(this);
         frame.setResizable(false);
         frame.addKeyListener(new PlayerMovement());
@@ -40,8 +40,39 @@ public class Panel extends JPanel  {
 
         try {
             if (App.maze.getIs3D()){
+                int shrink = 50;
                 System.out.println("Im in 3D");
                 render.render3DLevel();
+
+
+                for (int i = 0; i < 5; i++) {
+                    int[] xLocs = {100 + shrink*i, 150 + shrink*i, 150 + shrink*i, 100 + shrink*i};
+                    int[] yLocs = {100 + shrink*i, 150 + shrink*i, 650 - shrink*i, 700 - shrink*i};
+
+                    Polygon leftWall = new Polygon(xLocs, yLocs, xLocs.length);
+                    Render.graphics.setColor(Color.WHITE);
+                    Render.graphics.fill(leftWall);
+                    Render.graphics.setColor(Color.BLACK);
+                    Render.graphics.draw(leftWall);
+                }
+
+
+                for (int i = 0; i < 5; i++) {
+                    // int[] yLocs = {100 + shrink*i, 700 - shrink*i, 150 + shrink*i, 150 + shrink*i};
+                    // int[] xLocs = {100 + shrink*i, 100 + shrink*i, 650 - shrink*i, 150 + shrink*i};
+                    int[] yLocs = {100 + shrink*i, 150 + shrink*i, 150 + shrink*i, 100 + shrink*i};
+                    int[] xLocs = {100 + shrink*i, 150 + shrink*i, 650 - shrink*i, 700 - shrink*i};
+
+                    Polygon ceil = new Polygon(xLocs, yLocs, xLocs.length);
+                    Render.graphics.setColor(Color.WHITE);
+                    Render.graphics.fill(ceil);
+                    Render.graphics.setColor(Color.BLACK);
+                    Render.graphics.draw(ceil);
+                }
+
+
+
+
 
             } else {
                 System.out.println("Im in 2D");
