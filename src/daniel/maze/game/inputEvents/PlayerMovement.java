@@ -19,7 +19,7 @@ public class PlayerMovement implements KeyListener  {
 
         if (arg0.getKeyCode() == 37){
             // System.out.println("distance: " + Panel.render.getPlayer().getDirection());
-            int direction = Panel.render.getPlayer().getDirection();
+            // int direction = Panel.render.getPlayer().getDirection();
             // if (direction < 0){
             //     System.out.println("1");
             //     Panel.render.getPlayer().setDirection(3);
