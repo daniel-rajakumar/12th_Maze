@@ -21,10 +21,10 @@ public class Finish {
         this.img_y = img_y;
         this.img_width = img_width;
         this.img_height = img_height;
-        test();
+        draw();
     }
 
-    public void test() throws IOException {
+    public void draw() throws IOException {
         image_1 = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
         image_2 = ImageIO.read(new File(App.PATH_IMG + "pizza.png"));
         Render.graphics.drawImage(image_1, img_x, img_y, img_width, img_height, null);

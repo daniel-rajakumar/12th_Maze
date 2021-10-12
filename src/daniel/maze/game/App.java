@@ -14,8 +14,13 @@ public class App {
     public static Panel panel;
 
     App() throws Exception {
-        maze = new Maze(); 
         panel = new Panel();
+        maze = new Maze(); 
+        maze.setupLevel();
+    }
+
+    public Maze getMaze() {
+        return maze;
     }
 
     public static void main(String[] args) throws Exception {

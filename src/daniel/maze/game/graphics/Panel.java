@@ -26,19 +26,26 @@ public class Panel extends JPanel  {
         frame.addKeyListener(new PlayerMovement());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+        render = new Render();
     }
 
     public void paintComponent(Graphics g) {
         //Make Background Blank
+        System.out.println("hello!!!");
 		super.paintComponent(g);
-        Render.graphics =  (Graphics2D) g;
+        Render.graphics = (Graphics2D) g;
 		Render.graphics.setColor(Color.BLACK);
 		Render.graphics.fillRect(0,0,frame.getWidth(), frame.getHeight());
 
         Render.graphics.setColor(Color.GRAY);
 
 
-        render = new Render();
+        try {
+            render.renderLevel();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
     }
 
