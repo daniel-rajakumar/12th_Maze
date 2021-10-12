@@ -23,7 +23,7 @@ public class Render {
 
     Render() { }
 
-    public void renderLevel() throws IOException {
+    public void render2DLevel() throws IOException {
         renderObjects();
     }
 
@@ -33,6 +33,10 @@ public class Render {
         for (Water water: Maze.list_water)      water.draw();
         for (Finish finish: Maze.list_finish)   finish.draw();
         for (Player player: Maze.list_player)   player.draw();
+    }
+
+    public void render3DLevel() throws IOException {
+        // renderObjects();
     }
 
 }

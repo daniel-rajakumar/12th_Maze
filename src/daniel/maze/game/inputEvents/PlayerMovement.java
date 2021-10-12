@@ -11,8 +11,6 @@ import daniel.maze.game.object.Player;
 
 public class PlayerMovement implements KeyListener  {
 
-    int dir = 0;
-
     public void keyPressed(KeyEvent arg0) {
         // System.out.println("hello world");
 
@@ -20,6 +18,7 @@ public class PlayerMovement implements KeyListener  {
             case 37: Maze.list_player.get(0).turnLeft(); break;
             case 38: Maze.list_player.get(0).moveForward(); break;
             case 39: Maze.list_player.get(0).turnRight(); break;
+            case 32: App.maze.setIs3D(!App.maze.getIs3D());
         }
 
 

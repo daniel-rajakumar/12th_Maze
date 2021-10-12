@@ -38,10 +38,17 @@ public class Panel extends JPanel  {
 
         // Render.graphics.setColor(Color.GRAY);
 
-
         try {
-            render.renderLevel();
+            if (App.maze.getIs3D()){
+                System.out.println("Im in 3D");
+                render.render3DLevel();
+
+            } else {
+                System.out.println("Im in 2D");
+                render.render2DLevel();
+            }
         } catch (IOException e) { e.printStackTrace(); }
+
 
     }
 

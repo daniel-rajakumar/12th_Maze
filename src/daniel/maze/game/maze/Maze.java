@@ -19,6 +19,7 @@ public class Maze {
     private int pixelSize;
     private String file = "res/level/level_3d_1.txt";
     private BufferedReader input;
+    private boolean is3D = false;
 
     public static ArrayList<Enemy> list_enemy;
     public static ArrayList<Finish> list_finish;
@@ -104,6 +105,16 @@ public class Maze {
     public int getPixelSize() {
         return pixelSize;
     }
+
+    public boolean getIs3D(){
+        return is3D;
+    }
+
+
+	public void setIs3D(boolean is3D) {
+        this.is3D = is3D;
+	}
+
 
     
 }
