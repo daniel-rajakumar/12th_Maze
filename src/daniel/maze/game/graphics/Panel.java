@@ -31,13 +31,12 @@ public class Panel extends JPanel  {
 
     public void paintComponent(Graphics g) {
         //Make Background Blank
-        System.out.println("hello!!!");
 		super.paintComponent(g);
         Render.graphics = (Graphics2D) g;
 		Render.graphics.setColor(Color.BLACK);
 		Render.graphics.fillRect(0,0,frame.getWidth(), frame.getHeight());
 
-        Render.graphics.setColor(Color.GRAY);
+        // Render.graphics.setColor(Color.GRAY);
 
 
         try {

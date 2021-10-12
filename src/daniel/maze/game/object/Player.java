@@ -34,17 +34,14 @@ public class Player {
         totalSteps = 0;
         direction = 0;
 
-        System.out.println("hello");
-
         draw();
     }
 
     public void draw() throws IOException {
         BufferedImage image = ImageIO.read(new File(App.PATH_IMG + "blob.png"));
         Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
-
-
-        // turn(++direction%4);
+        
+        turn(direction);
     }
 
     public void turn(int dir) throws IOException {
@@ -57,9 +54,7 @@ public class Player {
             case 3:  Render.graphics.drawImage(rotate(image, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
         }
 
-        // System.out.println("dir: " + direction);
-        // direction++;
-
+        this.direction = dir;
     }
 
     public static BufferedImage rotate(BufferedImage img, int deg) {
