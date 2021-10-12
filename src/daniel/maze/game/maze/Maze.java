@@ -89,6 +89,10 @@ public class Maze {
         return map;
     }
 
+    public void setMap(char[][] map) {
+        this.map = map;
+    }
+
     public int getWidth() {
         return width;
     }

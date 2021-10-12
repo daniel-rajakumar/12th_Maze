@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
+import daniel.maze.game.maze.Maze;
 
 public class Player {
 
@@ -69,7 +70,6 @@ public class Player {
     }
 
     public void moveForward(){
-
     }
 
 

@@ -41,10 +41,7 @@ public class Panel extends JPanel  {
 
         try {
             render.renderLevel();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+        } catch (IOException e) { e.printStackTrace(); }
 
     }
 
