@@ -17,7 +17,7 @@ public class Maze {
     private int height, width;
     private char[][] map;
     private int pixelSize;
-    private String file = "res/level/level_1.txt";
+    private String file = "res/level/level_3d_1.txt";
     private BufferedReader input;
 
     public static ArrayList<Enemy> list_enemy;
@@ -76,7 +76,7 @@ public class Maze {
 
     public void setupObjects(int x, int y) throws IOException {
         switch (map[y][x]) {
-            case 'E': list_player.add(new Player(img_x, img_y, img_width, img_height)); break;
+            case 'E': list_player.add(new Player(x, y, pixelSize)); break;
             case 'F': list_finish.add(new Finish(img_x, img_y, img_width, img_height)); break;
             case 'D': list_enemy.add(new Enemy(img_x, img_y, img_width, img_height)); break;
             case ' ': list_grass.add(new Grass(img_x, img_y, img_width, img_height)); break;

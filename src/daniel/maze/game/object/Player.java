@@ -16,17 +16,17 @@ public class Player {
 
     private BufferedImage image;
     private int x, y;
+    private int pixelSize;
     private int steps, totalSteps;
     private boolean didWin, didLose;
     private int img_x, img_y, img_width, img_height;
     private int direction;
 
 
-    public Player(int img_x, int img_y, int img_width, int img_height) throws IOException {
-        this.img_x = img_x;
-        this.img_y = img_y;
-        this.img_width = img_width;
-        this.img_height = img_height;
+    public Player(int x, int y, int pixelSize) throws IOException {
+        this.x = x;
+        this.y = y;
+        this.pixelSize = pixelSize;
 
         // direction = 0;
         didWin = false;
@@ -40,6 +40,12 @@ public class Player {
 
     public void draw() throws IOException {
         BufferedImage image = ImageIO.read(new File(App.PATH_IMG + "blob.png"));
+
+
+        img_x = (x * pixelSize) + pixelSize;
+        img_y = (y * pixelSize) + pixelSize;
+        img_width = pixelSize;
+        img_height = pixelSize;
 
         switch (direction){
             case 0:  Render.graphics.drawImage(rotate(image, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
@@ -70,6 +76,20 @@ public class Player {
     }
 
     public void moveForward(){
+        // switch (direction){
+        //     case 0: System.out.println(App.maze.getMap()[y -  1][x]);
+        //     case 1: System.out.println(App.maze.getMap()[y][x + 1]);
+        //     case 2: System.out.println(App.maze.getMap()[y + 1][x]);
+        //     case 3: System.out.println(App.maze.getMap()[y][x - 1]);
+        // }
+
+
+        switch (direction){
+            case 0: y--; break;
+            case 1: x++; break;
+            case 2: y++; break;
+            case 3: x--; break;
+        }
     }
 
 
