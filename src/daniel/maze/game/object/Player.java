@@ -39,22 +39,13 @@ public class Player {
 
     public void draw() throws IOException {
         BufferedImage image = ImageIO.read(new File(App.PATH_IMG + "blob.png"));
-        Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
-        
-        turn(direction);
-    }
 
-    public void turn(int dir) throws IOException {
-        BufferedImage image = ImageIO.read(new File(App.PATH_IMG + "blob.png"));
-
-        switch (dir){
+        switch (direction){
             case 0:  Render.graphics.drawImage(rotate(image, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
             case 1:  Render.graphics.drawImage(rotate(image, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
             case 2:  Render.graphics.drawImage(rotate(image, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
             case 3:  Render.graphics.drawImage(rotate(image, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
         }
-
-        this.direction = dir;
     }
 
     public static BufferedImage rotate(BufferedImage img, int deg) {
@@ -77,10 +68,22 @@ public class Player {
         this.direction = direction;
     }
 
+    public void moveForward(){
+
+    }
+
+
+    public void turnLeft(){
+        if (--direction < 0) direction = 3;
+    }
+
+    public void turnRight(){
+        if (++direction > 3) direction = 0;
+    }
+
     public int getDirection() {
         return direction;
     }
-
 
 
 }

@@ -16,40 +16,14 @@ public class PlayerMovement implements KeyListener  {
     public void keyPressed(KeyEvent arg0) {
         // System.out.println("hello world");
 
-
-        if (arg0.getKeyCode() == 37){
-            System.out.println("left");
-
-            try {
-                Maze.list_player.get(0).turn(0);
-            } catch (IOException e) { e.printStackTrace(); }
-
-
-            // System.out.println("distance: " + Panel.render.getPlayer().getDirection());
-            // int direction = Panel.render.getPlayer().getDirection();
-            // if (direction < 0){
-            //     System.out.println("1");
-            //     Panel.render.getPlayer().setDirection(3);
-            // } else {
-            //     System.out.println("2");
-            //     Panel.render.getPlayer().setDirection(direction - 1);
-            // }
-
-
-            // Panel.render.getPlayer().setDirection(direction + 1);
-        }
-
-        if (arg0.getKeyCode() == 38){
-            System.out.println("up");
-            try {
-                Maze.list_player.get(0).turn(1);
-            } catch (IOException e) { e.printStackTrace(); }
+        switch (arg0.getKeyCode()){
+            case 37: Maze.list_player.get(0).turnLeft(); break;
+            case 38: Maze.list_player.get(0).moveForward(); break;
+            case 39: Maze.list_player.get(0).turnRight(); break;
         }
 
 
         App.panel.repaint();
-        System.out.println("dir: " + Maze.list_player.get(0).getDirection());
-
     }
 
     public void keyReleased(KeyEvent arg0) { }
