@@ -51,12 +51,12 @@ public class Render {
             int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
             int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
 
-            Polygon leftWall =      new Polygon(xLocs, yLocs, xLocs.length);
-            Polygon topWall =       new Polygon(yLocs, xLocs, xLocs.length);
-            Polygon bottomWall =    new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
-            Polygon rightWall =     new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
-            Rectangle door_left =   new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
-            Rectangle door_right =  new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
+            Polygon   leftWall   = new Polygon(xLocs, yLocs, xLocs.length);
+            Polygon   topWall    = new Polygon(yLocs, xLocs, xLocs.length);
+            Polygon   bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
+            Polygon   rightWall  = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
+            Rectangle door_left  = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
+            Rectangle door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
             Render.graphics.setColor(Color.WHITE);
             Render.graphics.fill(leftWall);
