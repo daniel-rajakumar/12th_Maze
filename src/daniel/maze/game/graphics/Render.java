@@ -46,16 +46,17 @@ public class Render {
             poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
             poly_x_4 = 100 + shrink * i; poly_y_4 = 700 - shrink * i;
 
-            int[] xLocs = {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
-            int[] yLocs = {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
+            int[] xLocs =   {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
+            int[] yLocs =   {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
             int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
             int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
 
-            Polygon leftWall = new Polygon(xLocs, yLocs, xLocs.length);
-            Polygon topWall = new Polygon(yLocs, xLocs, xLocs.length);
-            Polygon bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
-            Polygon rightWall = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
-            Rectangle door = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
+            Polygon leftWall =      new Polygon(xLocs, yLocs, xLocs.length);
+            Polygon topWall =       new Polygon(yLocs, xLocs, xLocs.length);
+            Polygon bottomWall =    new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
+            Polygon rightWall =     new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
+            Rectangle door_left =   new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
+            Rectangle door_right =  new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
             Render.graphics.setColor(Color.WHITE);
             Render.graphics.fill(leftWall);
@@ -63,11 +64,13 @@ public class Render {
             Render.graphics.fill(bottomWall);
             Render.graphics.fill(rightWall);
             Render.graphics.setColor(Color.LIGHT_GRAY);
-            // Render.graphics.fill(door);
+            Render.graphics.fill(door_left);
+            Render.graphics.fill(door_right);
 
 
             Render.graphics.setColor(Color.BLACK);
-            // Render.graphics.draw(door);
+            Render.graphics.draw(door_left);
+            Render.graphics.draw(door_right);
             Render.graphics.draw(leftWall);
             Render.graphics.draw(topWall);
             Render.graphics.draw(bottomWall);
