@@ -40,7 +40,7 @@ public class Render {
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
             poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
             poly_x_2 = 150 + shrink * i; poly_y_2 = 150 + shrink * i;
             poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
@@ -59,20 +59,20 @@ public class Render {
             Rectangle door = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
             Render.graphics.setColor(Color.WHITE);
-            // Render.graphics.fill(leftWall);
+            Render.graphics.fill(leftWall);
             Render.graphics.fill(topWall);
             Render.graphics.fill(bottomWall);
-            // Render.graphics.fill(botttomWall);
+            Render.graphics.fill(rightWall);
             Render.graphics.setColor(Color.LIGHT_GRAY);
             // Render.graphics.fill(door);
 
 
             Render.graphics.setColor(Color.BLACK);
             // Render.graphics.draw(door);
-            // Render.graphics.draw(leftWall);
+            Render.graphics.draw(leftWall);
             Render.graphics.draw(topWall);
             Render.graphics.draw(bottomWall);
-            // Render.graphics.draw(botttomWall);
+            Render.graphics.draw(rightWall);
         }
 
     }
