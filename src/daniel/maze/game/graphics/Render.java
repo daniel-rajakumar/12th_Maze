@@ -48,9 +48,8 @@ public class Render {
 
             int[] xLocs = {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
             int[] yLocs = {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
-            int[] xLocs_2 = {poly_x_4 + 600 - (shrink*i*2), poly_x_2 + (500 - (shrink * i*2)), poly_x_3, poly_x_4};
-            int[] yLocs_2 = {poly_y_4 + 00, poly_y_3 + 00, poly_y_3, poly_y_4};
-
+            int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
+            int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
 
             Polygon leftWall = new Polygon(xLocs, yLocs, xLocs.length);
             Polygon topWall = new Polygon(yLocs, xLocs, xLocs.length);
