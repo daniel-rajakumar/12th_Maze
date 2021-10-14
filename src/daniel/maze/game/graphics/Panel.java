@@ -49,26 +49,34 @@ public class Panel extends JPanel  {
                     int[] xLocs = {100 + shrink*i, 150 + shrink*i, 150 + shrink*i, 100 + shrink*i};
                     int[] yLocs = {100 + shrink*i, 150 + shrink*i, 650 - shrink*i, 700 - shrink*i};
 
+                    Rectangle rect = new Rectangle(100 + shrink*i, 150 + shrink*i, 50, (650 - 150) - shrink*(i*2));
+
+
                     Polygon leftWall = new Polygon(xLocs, yLocs, xLocs.length);
                     Render.graphics.setColor(Color.WHITE);
                     Render.graphics.fill(leftWall);
+                    Render.graphics.setColor(Color.RED);
                     Render.graphics.setColor(Color.BLACK);
                     Render.graphics.draw(leftWall);
+
+                    Render.graphics.setColor(Color.RED);
+                    Render.graphics.fill(rect);
+                    Render.graphics.draw(rect);
                 }
 
 
                 for (int i = 0; i < 5; i++) {
-                    // int[] yLocs = {100 + shrink*i, 700 - shrink*i, 150 + shrink*i, 150 + shrink*i};
-                    // int[] xLocs = {100 + shrink*i, 100 + shrink*i, 650 - shrink*i, 150 + shrink*i};
                     int[] yLocs = {100 + shrink*i, 150 + shrink*i, 150 + shrink*i, 100 + shrink*i};
                     int[] xLocs = {100 + shrink*i, 150 + shrink*i, 650 - shrink*i, 700 - shrink*i};
 
                     Polygon ceil = new Polygon(xLocs, yLocs, xLocs.length);
                     Render.graphics.setColor(Color.WHITE);
-                    Render.graphics.fill(ceil);
+                    // Render.graphics.fill(ceil);
                     Render.graphics.setColor(Color.BLACK);
-                    Render.graphics.draw(ceil);
+                    // Render.graphics.draw(ceil);
                 }
+
+                Rectangle rectangle = new Rectangle();
 
 
 
