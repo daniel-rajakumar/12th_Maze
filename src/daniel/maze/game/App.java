@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package daniel.maze.game;
 
 import javax.swing.Renderer;
@@ -31,3 +32,34 @@ public class App {
         new App();
     }
 }
+=======
+package daniel.maze.game;
+
+import daniel.maze.game.graphics.*;
+import daniel.maze.game.maze.Maze;
+import daniel.maze.game.object.*;
+
+public class App {
+
+    public static final boolean DEBUG = false;
+    public static final String PATH_IMG = System.getProperty("user.dir") + "/res/img/";
+    public static final String PATH_LVL = System.getProperty("user.dir") + "/res/level/";
+
+    public static Maze maze;
+    public static Panel panel;
+
+    App() throws Exception {
+        panel = new Panel();
+        maze = new Maze(); 
+        maze.setupLevel();
+    }
+
+    public Maze getMaze() {
+        return maze;
+    }
+
+    public static void main(String[] args) throws Exception {
+        new App();
+    }
+}
+>>>>>>> deb99ca87f5fbe891ca4edc87dc09c9f315d9e40
