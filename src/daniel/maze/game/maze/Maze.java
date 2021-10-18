@@ -17,8 +17,7 @@ public class Maze {
     private int height, width;
     private char[][] map;
     private int pixelSize;
-    private String file = "res/level/level_3d_1.txt";
-    private BufferedReader input;
+    private String file = "level_3d_1.txt";
     private boolean is3D = false;
 
     public static ArrayList<Enemy> list_enemy;
@@ -35,16 +34,13 @@ public class Maze {
         list_water = new ArrayList<>();
 
         pixelSize = 40;
-        File root = new File(System.getProperty("user.dir"));
-        input = new BufferedReader(new FileReader(new File(root, file)));
-
-        height = (int) Files.lines(Paths.get(file)).count();
-        width = (new BufferedReader(new FileReader(new File(file))).readLine().length());
+        height = (int) Files.lines(Paths.get(App.PATH_LVL + file)).count();
+        width = (new BufferedReader(new FileReader(new File(App.PATH_LVL, file))).readLine().length());
 
         map = new char[height][width];
 
         for (int i = 0; i < height; i++){
-            map[i] = input.readLine().toCharArray();
+            map[i] = (new BufferedReader(new FileReader(new File(App.PATH_LVL, file)))).readLine().toCharArray();
         }
 
     }

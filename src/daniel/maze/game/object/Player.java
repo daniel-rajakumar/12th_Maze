@@ -105,5 +105,13 @@ public class Player {
         return direction;
     }
 
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
 
 }

@@ -1,5 +1,7 @@
 package daniel.maze.game;
 
+import javax.swing.Renderer;
+
 import daniel.maze.game.graphics.*;
 import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.*;
@@ -12,10 +14,12 @@ public class App {
 
     public static Maze maze;
     public static Panel panel;
+    public static Render render;
 
     App() throws Exception {
-        panel = new Panel();
         maze = new Maze(); 
+        render = new Render();
+        panel = new Panel();
         maze.setupLevel();
     }
 

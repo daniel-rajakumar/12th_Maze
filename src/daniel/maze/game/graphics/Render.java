@@ -21,7 +21,7 @@ public class Render {
 
     public static Graphics2D graphics;
 
-    Render() { }
+    public Render() { }
 
     public void render2DLevel() throws IOException {
         renderObjects();
@@ -64,17 +64,19 @@ public class Render {
             Render.graphics.fill(bottomWall);
             Render.graphics.fill(rightWall);
             Render.graphics.setColor(Color.LIGHT_GRAY);
-            Render.graphics.fill(door_left);
-            Render.graphics.fill(door_right);
+
+            System.out.printf("(%s, %s)\n", Maze.list_player.get(0).getX(), Maze.list_player.get(0).getY());
+            // Render.graphics.fill(door_left);
+            // Render.graphics.fill(door_right);
 
 
             Render.graphics.setColor(Color.BLACK);
-            Render.graphics.draw(door_left);
-            Render.graphics.draw(door_right);
             Render.graphics.draw(leftWall);
             Render.graphics.draw(topWall);
             Render.graphics.draw(bottomWall);
             Render.graphics.draw(rightWall);
+            // Render.graphics.draw(door_left);
+            // Render.graphics.draw(door_right);
         }
 
     }

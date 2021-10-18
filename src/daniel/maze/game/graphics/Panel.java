@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class Panel extends JPanel  {
     private JFrame frame;
-    public static Render render;
 
     public Panel(){
         frame = new JFrame("A maze program");
@@ -26,7 +25,6 @@ public class Panel extends JPanel  {
         frame.addKeyListener(new PlayerMovement());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        render = new Render();
     }
 
     public void paintComponent(Graphics g) {
@@ -34,15 +32,16 @@ public class Panel extends JPanel  {
 		super.paintComponent(g);
         Render.graphics = (Graphics2D) g;
 		Render.graphics.setColor(Color.BLACK);
-		Render.graphics.fillRect(0,0,frame.getWidth(), frame.getHeight());
+		Render.graphics.fillRect(0, 0, frame.getWidth(), frame.getHeight());
 
         try {
-            if (App.maze.getIs3D()) render.render3DLevel();
-            else                    render.render2DLevel();
+            if (App.maze.getIs3D()) App.render.render3DLevel();
+            else                    App.render.render2DLevel();
         } catch (IOException e) { e.printStackTrace(); }
     }
 
     public void repaint(){
         super.repaint();
     }
+
 }
