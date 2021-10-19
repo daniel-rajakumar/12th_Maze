@@ -26,7 +26,11 @@ public class Panel extends JPanel  {
         frame.addKeyListener(new PlayerMovement());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        render = new Render();
+        try {
+            render = new Render(new Render_2d(), new Render_3d());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void paintComponent(Graphics g) {
@@ -34,7 +38,7 @@ public class Panel extends JPanel  {
 		super.paintComponent(g);
         Render.graphics = (Graphics2D) g;
 		Render.graphics.setColor(Color.BLACK);
-		Render.graphics.fillRect(0,0,frame.getWidth(), frame.getHeight());
+		Render.graphics.fillRect(0, 0, frame.getWidth(), frame.getHeight());
 
         try {
             if (App.maze.getIs3D()) render.render3DLevel();

@@ -20,63 +20,20 @@ import daniel.maze.game.object.Water;
 public class Render {
 
     public static Graphics2D graphics;
+    Render_2d render_2d;
+    Render_3d render_3d;
 
-    Render() { }
-
-    public void render2DLevel() throws IOException {
-        renderObjects();
+    Render(Render_2d render_2d, Render_3d render_3d) { 
+        this.render_2d = render_2d;
+        this.render_3d = render_3d;
     }
 
-    public void renderObjects() throws IOException {
-        for (Grass grass: Maze.list_grass)      grass.draw(); 
-        for (Enemy enemy: Maze.list_enemy)      enemy.draw();
-        for (Water water: Maze.list_water)      water.draw();
-        for (Finish finish: Maze.list_finish)   finish.draw();
-        for (Player player: Maze.list_player)   player.draw();
+    public void render2DLevel() throws IOException {
+        render_2d.render();
     }
 
     public void render3DLevel() throws IOException {
-        int shrink = 50;
-        int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
-        int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
-
-        for (int i = 0; i < 5; i++) {
-            poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
-            poly_x_2 = 150 + shrink * i; poly_y_2 = 150 + shrink * i;
-            poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
-            poly_x_4 = 100 + shrink * i; poly_y_4 = 700 - shrink * i;
-
-            int[] xLocs =   {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
-            int[] yLocs =   {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
-            int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
-            int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
-
-            Polygon   leftWall   = new Polygon(xLocs, yLocs, xLocs.length);
-            Polygon   topWall    = new Polygon(yLocs, xLocs, xLocs.length);
-            Polygon   bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
-            Polygon   rightWall  = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
-            Rectangle door_left  = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
-            Rectangle door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
-
-            Render.graphics.setColor(Color.WHITE);
-            Render.graphics.fill(leftWall);
-            Render.graphics.fill(topWall);
-            Render.graphics.fill(bottomWall);
-            Render.graphics.fill(rightWall);
-            Render.graphics.setColor(Color.LIGHT_GRAY);
-            Render.graphics.fill(door_left);
-            Render.graphics.fill(door_right);
-
-
-            Render.graphics.setColor(Color.BLACK);
-            Render.graphics.draw(door_left);
-            Render.graphics.draw(door_right);
-            Render.graphics.draw(leftWall);
-            Render.graphics.draw(topWall);
-            Render.graphics.draw(bottomWall);
-            Render.graphics.draw(rightWall);
-        }
-
+        render_3d.render();
     }
 
 }
