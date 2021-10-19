@@ -19,7 +19,6 @@ public class Render_2d {
         for (Water water: Maze.list_water)      water.draw();
         for (Finish finish: Maze.list_finish)   finish.draw();
         for (Player player: Maze.list_player)   player.draw();
-
     }
     
 }

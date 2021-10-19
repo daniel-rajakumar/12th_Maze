@@ -20,6 +20,11 @@ import daniel.maze.game.object.Water;
 
 public class Render_3d {
 
+
+    private Polygon leftWall, topWall, bottomWall, rightWall; 
+    private Rectangle door_left, door_right;
+
+
     Render_3d(){}
 
     public void render(){
@@ -38,23 +43,37 @@ public class Render_3d {
             int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
             int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
 
-            Polygon   leftWall   = new Polygon(xLocs, yLocs, xLocs.length);
-            Polygon   topWall    = new Polygon(yLocs, xLocs, xLocs.length);
-            Polygon   bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
-            Polygon   rightWall  = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
-            Rectangle door_left  = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
-            Rectangle door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
-
-            Render.graphics.setColor(Color.WHITE);
-            Render.graphics.fill(leftWall);
-            Render.graphics.fill(topWall);
-            Render.graphics.fill(bottomWall);
-            Render.graphics.fill(rightWall);
-            Render.graphics.setColor(Color.LIGHT_GRAY);
-            Render.graphics.fill(door_left);
-            Render.graphics.fill(door_right);
+            leftWall   = new Polygon(xLocs, yLocs, xLocs.length);
+            topWall    = new Polygon(yLocs, xLocs, xLocs.length);
+            bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
+            rightWall  = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
+            door_left  = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
+            door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
 
+            renderObjects();
+            renderObjects_outline();
+        }
+
+    }
+
+
+    void renderObjects(){
+        Render.graphics.setColor(Color.WHITE);
+        Render.graphics.fill(leftWall);
+        Render.graphics.fill(topWall);
+        Render.graphics.fill(bottomWall);
+        Render.graphics.fill(rightWall);
+        Render.graphics.setColor(Color.LIGHT_GRAY);
+
+        Render.graphics.fill(door_left);
+        Render.graphics.fill(door_right);
+    }
+
+
+
+
+    void renderObjects_outline(){
             Render.graphics.setColor(Color.BLACK);
             Render.graphics.draw(door_left);
             Render.graphics.draw(door_right);
@@ -62,7 +81,6 @@ public class Render_3d {
             Render.graphics.draw(topWall);
             Render.graphics.draw(bottomWall);
             Render.graphics.draw(rightWall);
-        }
 
     }
     
