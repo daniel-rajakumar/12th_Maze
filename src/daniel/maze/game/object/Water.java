@@ -27,13 +27,12 @@ public class Water {
     public void draw() throws IOException {
         image = ImageIO.read(new File(App.PATH_IMG + "water.png"));
 
-        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
-        // System.out.println(image);
-        // System.out.println(img_x);
-        // System.out.println(img_y);
-        // System.out.println(img_height);
-        // System.out.println(img_width);
-        // System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+        if (image == null){
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+            System.out.printf("[image: %s]\n[x: %s][y: %s][height: %s][width: %s]\n", image, img_x, img_y, img_height, img_width);
+            System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
+        }
+
 
 
 
