@@ -12,7 +12,7 @@ import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 import daniel.maze.game.maze.Maze;
 
-public class Player extends Objects {
+public class Player extends GameObject {
 
     private int steps, totalSteps;
     private boolean didWin, didLose;
@@ -40,10 +40,10 @@ public class Player extends Objects {
         img_height = PIXEL_SIZE;
 
         switch (this.getDirection()){
-            case 0:  Render.graphics.drawImage(this.rotate(image1, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
-            case 1:  Render.graphics.drawImage(this.rotate(image1, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
-            case 2:  Render.graphics.drawImage(this.rotate(image1, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
-            case 3:  Render.graphics.drawImage(this.rotate(image1, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
+            case 0:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
+            case 1:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
+            case 2:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
+            case 3:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
         }
     }
 

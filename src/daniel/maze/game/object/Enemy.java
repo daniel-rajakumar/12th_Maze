@@ -10,21 +10,21 @@ import javax.imageio.ImageIO;
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 
-public class Enemy extends Objects {
+public class Enemy extends GameObject {
 
     public Enemy(int x, int y) {
         super(x, y, "grass.png", "dino.png");
     }
 
+    @Override
     public void draw()  {
         img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
         img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
 
-
-        Render.graphics.drawImage(image1, img_x, img_y, img_width, img_height, null);
-        Render.graphics.drawImage(image2, img_x, img_y, img_width, img_height, null);
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
+        Render.graphics.drawImage(foregroundImage, img_x, img_y, img_width, img_height, null);
     }
 
 }

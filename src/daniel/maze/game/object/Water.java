@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 
-public class Water extends Objects {
+public class Water extends GameObject {
 
     public Water(int x, int y) throws IOException {
         super(x, y, "water.png");
@@ -23,7 +23,7 @@ public class Water extends Objects {
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
 
-        Render.graphics.drawImage(image1, img_x, img_y, img_width, img_height, null);
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
     }
 
 }
