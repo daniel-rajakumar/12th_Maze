@@ -21,7 +21,7 @@ import daniel.maze.game.object.Water;
 public class Render_3d {
 
 
-    private Polygon leftWall, topWall, bottomWall, rightWall; 
+    private Polygon leftWall, topWall, bottomWall, rightWall, frontWall; 
     private Rectangle door_left, door_right;
 
 
@@ -35,7 +35,7 @@ public class Render_3d {
 
         Player player = Maze.list_player.get(0);
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 1; i++) {
             poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
             poly_x_2 = 150 + shrink * i; poly_y_2 = 150 + shrink * i;
             poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
@@ -45,31 +45,50 @@ public class Render_3d {
             int[] yLocs =   {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
             int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
             int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
+            int[] xLocs_3 = {poly_x_3, poly_y_2, poly_y_3, poly_y_3};
+            int[] yLocs_3 = {poly_y_3, poly_x_2, poly_x_3, poly_y_3};
 
             leftWall   = new Polygon(xLocs, yLocs, xLocs.length);
             topWall    = new Polygon(yLocs, xLocs, xLocs.length);
             bottomWall = new Polygon(xLocs_2, yLocs_2, xLocs_2.length);
             rightWall  = new Polygon(yLocs_2, xLocs_2, xLocs_2.length);
+
+            frontWall  = new Polygon(xLocs_3, yLocs_3, xLocs_3.length);
+
             door_left  = new Rectangle(poly_x_1, poly_x_2, shrink, (poly_y_3 - poly_x_3));
             door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
 
             // System.out.printf("player: [x: %s][y: %s]\n", player.getX(), player.getY());
+            // System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
 
 
 
             boolean left = true, right = true;
             for (Water water: Maze.list_water){
                 int x1 = player.getX(), y1 = player.getY();
-                int x2 = water.getX(), y2 = water.getY();
+                int x2 = water.getX(),  y2 = water.getY();
 
-                if (x1 - 1 == x2 && y1 - i == y2) {
-                    System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
-                    left = false;
-                } 
-                if (x1 + 1 == x2 && y1 - i == y2) {
-                    System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
-                    right = false;
+                switch (player.getDirection()){
+                    case 0:
+                        if (x1 - 1 == x2 && y1 - i == y2) left = false;  
+                        if (x1 + 1 == x2 && y1 - i == y2) right = false;
+                        break;
+
+                    case 3:
+                        if (x1 - i == x2 && y1 + 1 == y2) left = false; 
+                        if (x1 - i == x2 && y1 - 1 == y2) right = false; 
+                        break;
+
+                    case 2:
+                        if (x1 + 1 == x2 && y1 + i == y2) left = false;  
+                        if (x1 - 1 == x2 && y1 + i == y2) right = false; 
+                        break;
+
+                    case 1:
+                        if (x1 + i == x2 && y1 - 1 == y2) left = false; 
+                        if (x1 + i == x2 && y1 + 1 == y2) right = false;
+                        break;
                 }
             }
 
@@ -90,6 +109,8 @@ public class Render_3d {
         Render.graphics.fill(topWall);
         Render.graphics.fill(bottomWall);
         Render.graphics.fill(rightWall);
+        Render.graphics.setColor(Color.GREEN);
+        Render.graphics.fill(frontWall);
         Render.graphics.setColor(Color.LIGHT_GRAY);
 
         if (leftDoor)  Render.graphics.fill(door_left);
@@ -105,7 +126,7 @@ public class Render_3d {
         Render.graphics.draw(leftWall);
         Render.graphics.draw(bottomWall);
         Render.graphics.draw(topWall);
-
+        Render.graphics.draw(frontWall);
         if (leftDoor)  Render.graphics.draw(door_left);
         if (rightDoor) Render.graphics.draw(door_right);
     }
