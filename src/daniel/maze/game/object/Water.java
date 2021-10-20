@@ -34,5 +34,12 @@ public class Water {
 
         Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
     }
+    
+    public int getX() {
+        return x;
+    }
 
+    public int getY() {
+        return y;
+    }
 }

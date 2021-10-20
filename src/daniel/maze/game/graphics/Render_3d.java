@@ -32,6 +32,9 @@ public class Render_3d {
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
+
+        Player player = Maze.list_player.get(0);
+
         for (int i = 0; i < 5; i++) {
             poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
             poly_x_2 = 150 + shrink * i; poly_y_2 = 150 + shrink * i;
@@ -51,14 +54,37 @@ public class Render_3d {
             door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
 
-            renderObjects();
-            renderObjects_outline();
+            // System.out.printf("player: [x: %s][y: %s]\n", player.getX(), player.getY());
+
+
+
+            boolean left = true, right = true;
+            for (Water water: Maze.list_water){
+                int x1 = player.getX(), y1 = player.getY();
+                int x2 = water.getX(), y2 = water.getY();
+
+                if (x1 - 1 == x2 && y1 - i == y2) {
+                    System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
+                    left = false;
+                } 
+                if (x1 + 1 == x2 && y1 - i == y2) {
+                    System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
+                    right = false;
+                }
+            }
+
+            renderObjects(left, right);
+            renderObjects_outline(left, right);
+
+
+
+            // try { Thread.sleep(5000); } catch (Exception e) { }
         }
 
     }
 
 
-    void renderObjects(){
+    void renderObjects(boolean leftDoor, boolean rightDoor){
         Render.graphics.setColor(Color.WHITE);
         Render.graphics.fill(leftWall);
         Render.graphics.fill(topWall);
@@ -66,33 +92,22 @@ public class Render_3d {
         Render.graphics.fill(rightWall);
         Render.graphics.setColor(Color.LIGHT_GRAY);
 
-        Player player = Maze.list_player.get(0);
-
-        System.out.printf("[x: %s][y: %s]\n", player.getX(), player.getY());
-
-
-        for (Water water: Maze.list_water){
-            System.out.println(water);
-
-            try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
-        }
-
-        Render.graphics.fill(door_left);
-        Render.graphics.fill(door_right);
+        if (leftDoor)  Render.graphics.fill(door_left);
+        if (rightDoor) Render.graphics.fill(door_right);
     }
 
 
 
 
-    void renderObjects_outline(){
-            Render.graphics.setColor(Color.BLACK);
-            Render.graphics.draw(door_left);
-            Render.graphics.draw(door_right);
-            Render.graphics.draw(leftWall);
-            Render.graphics.draw(topWall);
-            Render.graphics.draw(bottomWall);
-            Render.graphics.draw(rightWall);
+    void renderObjects_outline(boolean leftDoor, boolean rightDoor){
+        Render.graphics.setColor(Color.BLACK);
+        Render.graphics.draw(rightWall);
+        Render.graphics.draw(leftWall);
+        Render.graphics.draw(bottomWall);
+        Render.graphics.draw(topWall);
 
+        if (leftDoor)  Render.graphics.draw(door_left);
+        if (rightDoor) Render.graphics.draw(door_right);
     }
     
 }

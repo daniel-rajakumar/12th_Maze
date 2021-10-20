@@ -17,7 +17,7 @@ public class Maze {
     private int height, width;
     private char[][] map;
     private int pixelSize;
-    private String file = "res/level/level_2.txt";
+    private String file = "res/level/level_1.txt";
     private BufferedReader input;
     private boolean is3D = false;
 
