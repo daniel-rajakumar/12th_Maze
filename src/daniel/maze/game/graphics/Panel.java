@@ -43,7 +43,12 @@ public class Panel extends JPanel  {
         try {
             if (App.maze.getIs3D()) render.render3DLevel();
             else                    render.render2DLevel();
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (NullPointerException e) { 
+            System.out.println("Nothing to render on the screen");
+        } catch (IOException e) { 
+            System.out.println("hello!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            // e.printStackTrace(); 
+        }
     }
 
     public void repaint(){

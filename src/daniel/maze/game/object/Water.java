@@ -24,8 +24,13 @@ public class Water {
         draw();
     }
 
-    public void draw() throws IOException {
-        image = ImageIO.read(new File(App.PATH_IMG + "water.png"));
+    public void draw() {
+        try {
+            image = ImageIO.read(new File(App.PATH_IMG + "water.png"));
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         if (image == null){
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -33,6 +38,10 @@ public class Water {
             System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~");
         }
 
+
+        if (Render.graphics == null) {
+            return;
+        };
 
 
 
