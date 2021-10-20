@@ -13,7 +13,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.TimeUnit;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 public class Panel extends JPanel  {
     private JFrame frame;
     public static Render render;
@@ -27,6 +32,7 @@ public class Panel extends JPanel  {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
         try {
+            startRepaint();
             render = new Render(new Render_2d(), new Render_3d());
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,7 +57,14 @@ public class Panel extends JPanel  {
         }
     }
 
-    public void repaint(){
-        super.repaint();
+    public void startRepaint(){
+        TimerTask animate = new TimerTask() {
+            public void run(){
+                repaint();
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(animate, 0, 10);
     }
 }

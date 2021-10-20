@@ -22,7 +22,6 @@ public class PlayerMovement implements KeyListener  {
         }
 
 
-        App.panel.repaint();
     }
 
     public void keyReleased(KeyEvent arg0) { }
