@@ -39,11 +39,11 @@ public class Player extends GameObject {
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
 
-        switch (this.getDirection()){
-            case 0:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
-            case 1:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
-            case 2:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
-            case 3:  Render.graphics.drawImage(this.rotate(backgroundImage, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
+        switch (getDirection()){
+            case 0:  Render.graphics.drawImage(rotate(backgroundImage, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
+            case 1:  Render.graphics.drawImage(rotate(backgroundImage, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
+            case 2:  Render.graphics.drawImage(rotate(backgroundImage, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
+            case 3:  Render.graphics.drawImage(rotate(backgroundImage, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
         }
     }
 
@@ -59,23 +59,11 @@ public class Player extends GameObject {
         graphics2D.rotate(Math.toRadians(deg), imgWidth / 2, imgHeight / 2);
         graphics2D.drawImage(img, null, 0, 0);
 
-        
         return rotatedImage;
     }
 
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
 
     public void moveForward(){
-        // switch (direction){
-        //     case 0: System.out.println(App.maze.getMap()[y -  1][x]);
-        //     case 1: System.out.println(App.maze.getMap()[y][x + 1]);
-        //     case 2: System.out.println(App.maze.getMap()[y + 1][x]);
-        //     case 3: System.out.println(App.maze.getMap()[y][x - 1]);
-        // }
-
-
         switch (direction){
             case 0: y--; break;
             case 1: x++; break;
@@ -93,8 +81,7 @@ public class Player extends GameObject {
         if (++direction > 3) direction = 0;
     }
 
-    public int getDirection() {
-        return direction;
-    }
+    public int getDirection() { return direction; }
+    public void setDirection(int direction) { this.direction = direction; }
 
 }

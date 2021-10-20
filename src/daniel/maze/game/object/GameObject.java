@@ -38,5 +38,6 @@ public abstract class GameObject {
     public int getX() { return x; }
     public int getY() { return y; }
 
+
 }
 

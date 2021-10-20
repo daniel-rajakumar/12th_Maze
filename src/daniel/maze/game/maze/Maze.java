@@ -8,6 +8,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
+import javax.swing.text.PlainDocument;
+
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Panel;
 import daniel.maze.game.object.*;
@@ -16,7 +18,7 @@ public class Maze {
 
     private int height, width;
     private char[][] map;
-    private Object[][] map_Objects;
+    private GameObject[][] map_Objects;
     private int pixelSize;
     private String file = "res/level/level_1.txt";
     private BufferedReader input;
@@ -35,7 +37,6 @@ public class Maze {
         list_player = new ArrayList<>();
         list_water = new ArrayList<>();
 
-        pixelSize = 40;
         File root = new File(System.getProperty("user.dir"));
         input = new BufferedReader(new FileReader(new File(root, file)));
 
@@ -43,6 +44,7 @@ public class Maze {
         width = (new BufferedReader(new FileReader(new File(file))).readLine().length());
 
         map = new char[height][width];
+        map_Objects = new GameObject[height][width];
 
         for (int i = 0; i < height; i++){
             map[i] = input.readLine().toCharArray();
@@ -50,79 +52,51 @@ public class Maze {
     }
 
 
-
-    int img_x;
-    int img_y;
-    int img_width;
-    int img_height;
-
     public void setupLevel() throws IOException {
-        // System.out.println("1");
-
         for (int y = 0; y < height; y++){
             for (int x = 0; x < width; x++){
-
-                img_x = (x * pixelSize) + pixelSize;
-                img_y = (y * pixelSize) + pixelSize; 
-                img_width = pixelSize;
-                img_height = pixelSize;
-
                 setupObjects(x, y);
             }
         }
-        // System.out.println("hi");
-
     }
 
 
     public void setupObjects(int x, int y) throws IOException {
         switch (map[y][x]) {
-            case 'E': list_player.add(new Player(x, y)); break;
-            case 'F': list_finish.add(new Finish(x, y)); break;
-            case 'D': list_enemy.add(new Enemy(x, y)); break;
-            case ' ': list_grass.add(new Grass(x, y)); break;
-            case '#': list_water.add(new Water(x, y)); break;
+            case 'E': map_Objects[y][x] = new Player(x, y); break;
+            case 'F': map_Objects[y][x] = new Finish(x, y); break;
+            case 'D': map_Objects[y][x] = new Enemy(x, y); break;
+            case ' ': map_Objects[y][x] = new Grass(x, y); break;
+            case '#': map_Objects[y][x] = new Water(x, y); break;
             default : System.out.println("Nothing"); 
         }
+        setupObjects();
     }
 
-    public void updateMap(Object object){
-        if (object instanceof Player){
-
+    public void setupObjects(){
+        for (GameObject[] i: map_Objects){
+            for (GameObject j: i){
+                if (j instanceof Player) list_player.add((Player)j);
+                if (j instanceof Finish) list_finish.add((Finish)j);
+                if (j instanceof Enemy) list_enemy.add((Enemy)j);
+                if (j instanceof Grass) list_grass.add((Grass)j);
+                if (j instanceof Water) list_water.add((Water)j);
+            }
         }
-
     }
 
 
 
-    public char[][] getMap() {
-        return map;
-    }
-
-    public void setMap(char[][] map) {
-        this.map = map;
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public int getPixelSize() {
-        return pixelSize;
-    }
-
-    public boolean getIs3D(){
-        return is3D;
-    }
-
-	public void setIs3D(boolean is3D) {
-        this.is3D = is3D;
-	}
 
 
-    
+
+    public char[][] getMap() { return map; }
+    public int getWidth() { return width; }
+    public int getHeight() { return height; }
+    public int getPixelSize() { return pixelSize; }
+    public boolean getIs3D(){ return is3D; }
+
+
+    public void setMap(char[][] map) { this.map = map; }
+	public void setIs3D(boolean is3D) { this.is3D = is3D; }
 }
