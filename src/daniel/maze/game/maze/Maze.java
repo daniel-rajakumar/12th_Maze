@@ -80,7 +80,7 @@ public class Maze {
             case 'F': list_finish.add(new Finish(img_x, img_y, img_width, img_height)); break;
             case 'D': list_enemy.add(new Enemy(img_x, img_y, img_width, img_height)); break;
             case ' ': list_grass.add(new Grass(img_x, img_y, img_width, img_height)); break;
-            case '#': list_water.add(new Water(img_x, img_y, img_width, img_height)); break;
+            case '#': list_water.add(new Water(x, y, pixelSize)); break;
             default : System.out.println("Nothing"); 
         }
     }
