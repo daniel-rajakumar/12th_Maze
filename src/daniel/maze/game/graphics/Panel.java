@@ -24,6 +24,7 @@ public class Panel extends JPanel  {
     public static Render render;
 
     public Panel(){
+
         frame = new JFrame("A maze program");
         frame.setSize(1150, 800);
         frame.add(this);
@@ -31,7 +32,11 @@ public class Panel extends JPanel  {
         frame.addKeyListener(new PlayerMovement());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
+
         try {
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) { }
             startRepaint();
             render = new Render(new Render_2d(), new Render_3d());
         } catch (Exception e) {
@@ -64,7 +69,6 @@ public class Panel extends JPanel  {
             }
         };
 
-        Timer timer = new Timer();
-        timer.schedule(animate, 0, 10);
+        new Timer().schedule(animate, 0, 10);
     }
 }

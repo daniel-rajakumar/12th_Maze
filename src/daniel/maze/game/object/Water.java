@@ -39,12 +39,6 @@ public class Water {
         }
 
 
-        if (Render.graphics == null) {
-            return;
-        };
-
-
-
         Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
     }
 

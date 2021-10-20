@@ -66,6 +66,17 @@ public class Render_3d {
         Render.graphics.fill(rightWall);
         Render.graphics.setColor(Color.LIGHT_GRAY);
 
+        Player player = Maze.list_player.get(0);
+
+        System.out.printf("[x: %s][y: %s]\n", player.getX(), player.getY());
+
+
+        for (Water water: Maze.list_water){
+            System.out.println(water);
+
+            try { Thread.sleep(1000); } catch (InterruptedException e) { e.printStackTrace(); }
+        }
+
         Render.graphics.fill(door_left);
         Render.graphics.fill(door_right);
     }
