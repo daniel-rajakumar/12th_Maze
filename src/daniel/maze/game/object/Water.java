@@ -16,4 +16,14 @@ public class Water extends Objects {
         super(x, y, "water.png");
     }
 
+    @Override
+    public void draw() {
+        img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+
+        Render.graphics.drawImage(image1, img_x, img_y, img_width, img_height, null);
+    }
+
 }

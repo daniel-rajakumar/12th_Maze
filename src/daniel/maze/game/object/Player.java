@@ -32,6 +32,21 @@ public class Player extends Objects {
 
     }
 
+    @Override
+    public void draw() {
+        img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+
+        switch (this.getDirection()){
+            case 0:  Render.graphics.drawImage(this.rotate(image1, (90 * 0)), img_x, img_y, img_width, img_height, null); break;
+            case 1:  Render.graphics.drawImage(this.rotate(image1, (90 * 1)), img_x, img_y, img_width, img_height, null); break;
+            case 2:  Render.graphics.drawImage(this.rotate(image1, (90 * 2)), img_x, img_y, img_width, img_height, null); break;
+            case 3:  Render.graphics.drawImage(this.rotate(image1, (90 * 3)), img_x, img_y, img_width, img_height, null); break;
+        }
+    }
+
     public BufferedImage rotate(BufferedImage img, int deg) {
         int imgWidth =  img.getWidth();
         int imgHeight = img.getHeight();

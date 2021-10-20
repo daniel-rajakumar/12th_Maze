@@ -78,9 +78,9 @@ public class Maze {
     public void setupObjects(int x, int y) throws IOException {
         switch (map[y][x]) {
             case 'E': list_player.add(new Player(x, y)); break;
-            case 'F': list_finish.add(new Finish(img_x, img_y, img_width, img_height)); break;
-            case 'D': list_enemy.add(new Enemy(img_x, img_y, img_width, img_height)); break;
-            case ' ': list_grass.add(new Grass(img_x, img_y, img_width, img_height)); break;
+            case 'F': list_finish.add(new Finish(x, y)); break;
+            case 'D': list_enemy.add(new Enemy(x, y)); break;
+            case ' ': list_grass.add(new Grass(x, y)); break;
             case '#': list_water.add(new Water(x, y)); break;
             default : System.out.println("Nothing"); 
         }

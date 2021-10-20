@@ -10,23 +10,19 @@ import javax.imageio.ImageIO;
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 
-public class Grass {
+public class Grass extends Objects {
 
-    private BufferedImage image;
-    private int img_x, img_y, img_width, img_height;
-
-
-    public Grass(int img_x, int img_y, int img_width, int img_height) throws IOException{
-        this.img_x = img_x;
-        this.img_y = img_y;
-        this.img_width = img_width;
-        this.img_height = img_height;
-        draw();
+    public Grass(int x, int y) {
+        super(x, y, "grass.png");
     }
 
-    public void draw() throws IOException {
-        image = ImageIO.read(new File(App.PATH_IMG + "grass.png"));
-        Render.graphics.drawImage(image, img_x, img_y, img_width, img_height, null);
+    public void draw() {
+        img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+
+        Render.graphics.drawImage(image1, img_x, img_y, img_width, img_height, null);
     }
 
 }
