@@ -29,13 +29,14 @@ public class Render_3d {
 
     public void render(){
         int shrink = 50;
+        int length = 5;
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
 
         Player player = Maze.list_player.get(0);
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < length; i++) {
             poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
             poly_x_2 = 150 + shrink * i; poly_y_2 = 150 + shrink * i;
             poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
