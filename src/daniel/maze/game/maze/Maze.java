@@ -17,8 +17,8 @@ import daniel.maze.game.object.*;
 public class Maze {
 
     private int height, width;
-    private char[][] map;
-    private GameObject[][] map_Objects;
+    private char[][] char_map;
+    private GameObject[][] obj_map;
     private int pixelSize;
     private String file = "res/level/level_1.txt";
     private BufferedReader input;
@@ -43,11 +43,11 @@ public class Maze {
         height = (int) Files.lines(Paths.get(file)).count();
         width = (new BufferedReader(new FileReader(new File(file))).readLine().length());
 
-        map = new char[height][width];
-        map_Objects = new GameObject[height][width];
+        char_map = new char[height][width];
+        obj_map = new GameObject[height][width];
 
         for (int i = 0; i < height; i++){
-            map[i] = input.readLine().toCharArray();
+            char_map[i] = input.readLine().toCharArray();
         }
     }
 
@@ -62,41 +62,24 @@ public class Maze {
 
 
     public void setupObjects(int x, int y) throws IOException {
-        switch (map[y][x]) {
-            case 'E': map_Objects[y][x] = new Player(x, y); break;
-            case 'F': map_Objects[y][x] = new Finish(x, y); break;
-            case 'D': map_Objects[y][x] = new Enemy(x, y); break;
-            case ' ': map_Objects[y][x] = new Grass(x, y); break;
-            case '#': map_Objects[y][x] = new Water(x, y); break;
+        switch (char_map[y][x]) {
+            case 'E': Player player = new Player(x, y); obj_map[y][x] = player; list_player.add(player); break;
+            case 'F': Finish finish = new Finish(x, y); obj_map[y][x] = finish; list_finish.add(finish); break;
+            case 'D': Enemy enemy = new Enemy(x, y);    obj_map[y][x] = enemy;  list_enemy.add(enemy);   break;
+            case ' ': Grass grass = new Grass(x, y);    obj_map[y][x] = grass;  list_grass.add(grass);   break;
+            case '#': Water water = new Water(x, y);    obj_map[y][x] = water;  list_water.add(water);   break;
             default : System.out.println("Nothing"); 
         }
-        setupObjects();
-    }
-
-    public void setupObjects(){
-        for (GameObject[] i: map_Objects){
-            for (GameObject j: i){
-                if (j instanceof Player) list_player.add((Player)j);
-                if (j instanceof Finish) list_finish.add((Finish)j);
-                if (j instanceof Enemy) list_enemy.add((Enemy)j);
-                if (j instanceof Grass) list_grass.add((Grass)j);
-                if (j instanceof Water) list_water.add((Water)j);
-            }
-        }
     }
 
 
-
-
-
-
-    public char[][] getMap() { return map; }
+    public char[][] getMap() { return char_map; }
     public int getWidth() { return width; }
     public int getHeight() { return height; }
     public int getPixelSize() { return pixelSize; }
     public boolean getIs3D(){ return is3D; }
 
 
-    public void setMap(char[][] map) { this.map = map; }
+    public void setMap(char[][] map) { this.char_map = map; }
 	public void setIs3D(boolean is3D) { this.is3D = is3D; }
 }
