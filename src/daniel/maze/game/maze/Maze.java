@@ -16,6 +16,7 @@ public class Maze {
 
     private int height, width;
     private char[][] map;
+    private Object[][] map_Objects;
     private int pixelSize;
     private String file = "res/level/level_1.txt";
     private BufferedReader input;
@@ -76,14 +77,22 @@ public class Maze {
 
     public void setupObjects(int x, int y) throws IOException {
         switch (map[y][x]) {
-            case 'E': list_player.add(new Player(x, y, pixelSize)); break;
+            case 'E': list_player.add(new Player(x, y)); break;
             case 'F': list_finish.add(new Finish(img_x, img_y, img_width, img_height)); break;
             case 'D': list_enemy.add(new Enemy(img_x, img_y, img_width, img_height)); break;
             case ' ': list_grass.add(new Grass(img_x, img_y, img_width, img_height)); break;
-            case '#': list_water.add(new Water(x, y, pixelSize)); break;
+            case '#': list_water.add(new Water(x, y)); break;
             default : System.out.println("Nothing"); 
         }
     }
+
+    public void updateMap(Object object){
+        if (object instanceof Player){
+
+        }
+
+    }
+
 
 
     public char[][] getMap() {
@@ -109,7 +118,6 @@ public class Maze {
     public boolean getIs3D(){
         return is3D;
     }
-
 
 	public void setIs3D(boolean is3D) {
         this.is3D = is3D;
