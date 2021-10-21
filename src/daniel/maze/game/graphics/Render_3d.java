@@ -38,15 +38,20 @@ public class Render_3d {
 
 
         Player player = Maze.list_player.get(0);
+        GameObject obj = null;
 
-        for (int i = 4; i >= 0; i--){
+        for (int i = 5; i >= 0; i--){
             int x = player.getX();
             int y = player.getY();
             switch (player.getDirection()){
-                case 0: if (App.maze.whatIsIn(x, y-i) instanceof Water) length = i; break;
-                case 1: if (App.maze.whatIsIn(x+i, y) instanceof Water) length = i; break;
-                case 2: if (App.maze.whatIsIn(x, y+i) instanceof Water) length = i; break;
-                case 3: if (App.maze.whatIsIn(x-i, y) instanceof Water) length = i; break;
+                case 0: obj = App.maze.whatIsIn(x, y - i); break;
+                case 1: obj = App.maze.whatIsIn(x + i, y); break;
+                case 2: obj = App.maze.whatIsIn(x, y + i); break;
+                case 3: obj = App.maze.whatIsIn(x - i, y); break;
+            }
+
+            if (obj instanceof Water ||  obj == null) {
+                length = i;
             }
         }
 
