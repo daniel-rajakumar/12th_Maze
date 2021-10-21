@@ -34,8 +34,21 @@ public class Render_3d {
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
+        boolean left, right;
+
 
         Player player = Maze.list_player.get(0);
+
+        for (int i = 4; i >= 0; i--){
+            int x = player.getX();
+            int y = player.getY();
+            switch (player.getDirection()){
+                case 0: if (App.maze.whatIsIn(x, y-i) instanceof Water) length = i; break;
+                case 1: if (App.maze.whatIsIn(x+i, y) instanceof Water) length = i; break;
+                case 2: if (App.maze.whatIsIn(x, y+i) instanceof Water) length = i; break;
+                case 3: if (App.maze.whatIsIn(x-i, y) instanceof Water) length = i; break;
+            }
+        }
 
         for (int i = 0; i < length; i++) {
             poly_x_1 = 100 + shrink * i; poly_y_1 = 100 + shrink * i;
@@ -66,7 +79,6 @@ public class Render_3d {
 
 
 
-            boolean left = true, right = true;
 
             // System.out.println("front: " + App.maze.whatIsIn(player.getX(), player.getY() - 1).getClass().getSimpleName());
 
@@ -92,62 +104,12 @@ public class Render_3d {
                     break; 
             }
 
-            if (obj_left instanceof Water){
-                left = false;
-            }
 
-            if (obj_right instanceof Water){
-                right = false;
-            }
-
-            // System.out.printf("[%s]<-[%s]->[%s]\n", obj_left.getClass().getSimpleName(), obj_front.getClass().getSimpleName(), obj_right.getClass().getSimpleName());
-
-
-
-
-
-
-
-
-
-
-
-
-            // for (Water water: Maze.list_water){
-            //     int x1 = player.getX(), y1 = player.getY();
-            //     int x2 = water.getX(),  y2 = water.getY();
-
-            //     switch (player.getDirection()){
-            //         case 0:
-            //             if (x1 - 1 == x2 && y1 - i == y2) left = false;  
-            //             if (x1 + 1 == x2 && y1 - i == y2) right = false;
-            //             break;
-
-            //         case 3:
-            //             if (x1 - i == x2 && y1 + 1 == y2) left = false; 
-            //             if (x1 - i == x2 && y1 - 1 == y2) right = false; 
-            //             break;
-
-            //         case 2:
-            //             if (x1 + 1 == x2 && y1 + i == y2) left = false;  
-            //             if (x1 - 1 == x2 && y1 + i == y2) right = false; 
-            //             break;
-
-            //         case 1:
-            //             if (x1 + i == x2 && y1 - 1 == y2) left = false; 
-            //             if (x1 + i == x2 && y1 + 1 == y2) right = false;
-            //             break;
-            //     }
-            // }
-
-
-
-
+            left = obj_left instanceof Grass;
+            right = obj_right instanceof Grass;
 
             renderObjects(left, right);
             renderObjects_outline(left, right);
-
-
 
             // try { Thread.sleep(5000); } catch (Exception e) { }
         }
