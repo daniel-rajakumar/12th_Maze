@@ -73,6 +73,12 @@ public class Maze {
     }
 
     public GameObject whatIsIn(int x, int y){
+        if (x >= width || y >= height || x < 0 || y < 0) {
+            System.out.println("out of bounce!");
+            return null;
+        }
+
+
         return obj_map[y][x];
     }
 

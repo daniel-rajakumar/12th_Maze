@@ -13,6 +13,7 @@ import daniel.maze.game.graphics.*;
 import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.Enemy;
 import daniel.maze.game.object.Finish;
+import daniel.maze.game.object.GameObject;
 import daniel.maze.game.object.Grass;
 import daniel.maze.game.object.Player;
 import daniel.maze.game.object.Water;
@@ -66,32 +67,82 @@ public class Render_3d {
 
 
             boolean left = true, right = true;
-            for (Water water: Maze.list_water){
-                int x1 = player.getX(), y1 = player.getY();
-                int x2 = water.getX(),  y2 = water.getY();
 
-                switch (player.getDirection()){
-                    case 0:
-                        if (x1 - 1 == x2 && y1 - i == y2) left = false;  
-                        if (x1 + 1 == x2 && y1 - i == y2) right = false;
-                        break;
+            // System.out.println("front: " + App.maze.whatIsIn(player.getX(), player.getY() - 1).getClass().getSimpleName());
 
-                    case 3:
-                        if (x1 - i == x2 && y1 + 1 == y2) left = false; 
-                        if (x1 - i == x2 && y1 - 1 == y2) right = false; 
-                        break;
-
-                    case 2:
-                        if (x1 + 1 == x2 && y1 + i == y2) left = false;  
-                        if (x1 - 1 == x2 && y1 + i == y2) right = false; 
-                        break;
-
-                    case 1:
-                        if (x1 + i == x2 && y1 - 1 == y2) left = false; 
-                        if (x1 + i == x2 && y1 + 1 == y2) right = false;
-                        break;
-                }
+            GameObject obj_front = App.maze.whatIsIn(player.getX(), player.getY());
+            GameObject obj_left = App.maze.whatIsIn(player.getX(), player.getY());
+            GameObject obj_right = App.maze.whatIsIn(player.getX(), player.getY());
+            switch (player.getDirection()){
+                case 0: 
+                    obj_left = App.maze.whatIsIn(player.getX() - 1, player.getY() - i); 
+                    obj_right = App.maze.whatIsIn(player.getX() + 1, player.getY() - i); 
+                    break; 
+                case 1: 
+                    obj_left = App.maze.whatIsIn(player.getX() + i, player.getY() - 1); 
+                    obj_right = App.maze.whatIsIn(player.getX() + i, player.getY() + 1); 
+                    break; 
+                case 2: 
+                    obj_left = App.maze.whatIsIn(player.getX() + 1, player.getY() + i); 
+                    obj_right = App.maze.whatIsIn(player.getX() - 1, player.getY() + i); 
+                    break; 
+                case 3: 
+                    obj_left = App.maze.whatIsIn(player.getX() - i, player.getY() + 1); 
+                    obj_right = App.maze.whatIsIn(player.getX() - i, player.getY() - 1); 
+                    break; 
             }
+
+            if (obj_left instanceof Water){
+                left = false;
+            }
+
+            if (obj_right instanceof Water){
+                right = false;
+            }
+
+            // System.out.printf("[%s]<-[%s]->[%s]\n", obj_left.getClass().getSimpleName(), obj_front.getClass().getSimpleName(), obj_right.getClass().getSimpleName());
+
+
+
+
+
+
+
+
+
+
+
+
+            // for (Water water: Maze.list_water){
+            //     int x1 = player.getX(), y1 = player.getY();
+            //     int x2 = water.getX(),  y2 = water.getY();
+
+            //     switch (player.getDirection()){
+            //         case 0:
+            //             if (x1 - 1 == x2 && y1 - i == y2) left = false;  
+            //             if (x1 + 1 == x2 && y1 - i == y2) right = false;
+            //             break;
+
+            //         case 3:
+            //             if (x1 - i == x2 && y1 + 1 == y2) left = false; 
+            //             if (x1 - i == x2 && y1 - 1 == y2) right = false; 
+            //             break;
+
+            //         case 2:
+            //             if (x1 + 1 == x2 && y1 + i == y2) left = false;  
+            //             if (x1 - 1 == x2 && y1 + i == y2) right = false; 
+            //             break;
+
+            //         case 1:
+            //             if (x1 + i == x2 && y1 - 1 == y2) left = false; 
+            //             if (x1 + i == x2 && y1 + 1 == y2) right = false;
+            //             break;
+            //     }
+            // }
+
+
+
+
 
             renderObjects(left, right);
             renderObjects_outline(left, right);
