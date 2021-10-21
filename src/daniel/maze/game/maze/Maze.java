@@ -72,6 +72,9 @@ public class Maze {
         }
     }
 
+    public GameObject whatIsIn(int x, int y){
+        return obj_map[y][x];
+    }
 
     public char[][] getMap() { return char_map; }
     public int getWidth() { return width; }
