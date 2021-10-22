@@ -16,15 +16,19 @@ public class Render_2d {
 
     public void render() throws IOException {
         try {
-            for (Grass grass: Maze.list_grass)      grass.draw(); 
-            for (Enemy enemy: Maze.list_enemy)      enemy.draw();
-            for (Water water: Maze.list_water)      water.draw();
+            for (Grass grass:   Maze.list_grass)    grass.draw(); 
+            for (Enemy enemy:   Maze.list_enemy)    enemy.draw();
+            for (Water water:   Maze.list_water)    water.draw();
             for (Finish finish: Maze.list_finish)   finish.draw();
             for (Player player: Maze.list_player)   player.draw();
             
         } catch (ConcurrentModificationException e) {
             System.out.println("message: " + e.getMessage());
         }
+        
     }
+
+
+
     
 }

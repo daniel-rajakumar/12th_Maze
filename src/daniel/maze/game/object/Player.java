@@ -1,12 +1,8 @@
 package daniel.maze.game.object;
 
-
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
@@ -29,7 +25,6 @@ public class Player extends GameObject {
         steps = 0;
         totalSteps = 0;
         direction = 0;
-
     }
 
     @Override
@@ -64,6 +59,19 @@ public class Player extends GameObject {
 
 
     public void moveForward(){
+        GameObject obj;
+
+        switch (direction) {
+            case 0 : obj = App.maze.whatIsIn(x, y - 1); break;
+            case 1 : obj = App.maze.whatIsIn(x + 1, y); break;
+            case 2 : obj = App.maze.whatIsIn(x, y + 1); break;
+            case 3 : obj = App.maze.whatIsIn(x - 1, y); break;
+            default: obj = null;
+            
+        }
+
+        if (obj instanceof Water || obj == null) return;
+
         switch (direction){
             case 0: y--; break;
             case 1: x++; break;
