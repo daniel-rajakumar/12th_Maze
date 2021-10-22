@@ -11,10 +11,10 @@ public class App {
     public static final String PATH_LVL = System.getProperty("user.dir") + "/res/level/";
 
     public static Maze maze;
-    public static Panel panel;
+    public static GamePanel panel;
 
     App() throws Exception {
-        panel = new Panel();
+        panel = new GamePanel();
         maze = new Maze(); 
         maze.setupLevel();
     }

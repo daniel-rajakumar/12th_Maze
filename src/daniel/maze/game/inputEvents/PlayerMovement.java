@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.io.IOException;
 
 import daniel.maze.game.App;
-import daniel.maze.game.graphics.Panel;
+import daniel.maze.game.graphics.GamePanel;
 import daniel.maze.game.graphics.Render;
 import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.Player;

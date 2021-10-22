@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.text.PlainDocument;
 
 import daniel.maze.game.App;
-import daniel.maze.game.graphics.Panel;
+import daniel.maze.game.graphics.GamePanel;
 import daniel.maze.game.object.*;
 
 public class Maze {

@@ -8,11 +8,12 @@ import javax.imageio.ImageIO;
 
 import daniel.maze.game.App;
 
+// this class is the parent class of all the 2D-objects in this game from explorer to walls. 
 public abstract class GameObject {
     protected int x, y;
     protected final int PIXEL_SIZE = 40;
-    protected BufferedImage backgroundImage, foregroundImage;
     protected int img_x, img_y, img_width, img_height;
+    protected BufferedImage backgroundImage, foregroundImage;
 
     GameObject(int x, int y, String backgroundFile){
         this(x, y, backgroundFile, null);
