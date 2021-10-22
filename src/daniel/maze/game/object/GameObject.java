@@ -1,15 +1,12 @@
 package daniel.maze.game.object;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 
 import daniel.maze.game.App;
-import daniel.maze.game.graphics.Render;
 
 public abstract class GameObject {
     protected int x, y;

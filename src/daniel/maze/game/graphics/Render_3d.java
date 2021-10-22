@@ -50,7 +50,7 @@ public class Render_3d {
                 case 3: obj = App.maze.whatIsIn(x - i, y); break;
             }
 
-            if (obj instanceof Water ||  obj == null) {
+            if (obj instanceof Water || obj == null) {
                 length = i;
             }
         }

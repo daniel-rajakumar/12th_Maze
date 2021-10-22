@@ -37,7 +37,7 @@ public class Panel extends JPanel  {
             try {
                 Thread.sleep(100);
             } catch (Exception e) { }
-            startRepaint();
+            startRepaint(10);
             render = new Render(new Render_2d(), new Render_3d());
         } catch (Exception e) {
             e.printStackTrace();
@@ -62,13 +62,13 @@ public class Panel extends JPanel  {
         }
     }
 
-    public void startRepaint(){
+    public void startRepaint(int milliSeconds){
         TimerTask animate = new TimerTask() {
             public void run(){
                 repaint();
             }
         };
 
-        new Timer().schedule(animate, 0, 10);
+        new Timer().schedule(animate, 0, milliSeconds);
     }
 }
