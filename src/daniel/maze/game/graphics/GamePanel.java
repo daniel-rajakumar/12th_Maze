@@ -44,7 +44,7 @@ public class GamePanel extends JPanel  {
 		Render.graphics.setColor(Color.BLACK);
 		Render.graphics.fillRect(0, 0, frame.getWidth(), frame.getHeight());
 
-        try { // toggle between 2d and 3d when user press spacebar
+        try { // toggle between 2d and 3d when user press spaceBar
             if (App.maze.getIs3D()) render.render3DLevel();
             else                    render.render2DLevel();
             
