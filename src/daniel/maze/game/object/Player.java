@@ -31,7 +31,6 @@ public class Player extends GameObject {
 
     @Override
     public void draw() {
-        // rotate image based on the player direction
         switch (getDirection()){
             case 0: rotateImage(90 * 0); break;
             case 1: rotateImage(90 * 1); break;

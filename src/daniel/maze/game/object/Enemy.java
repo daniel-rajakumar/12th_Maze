@@ -15,12 +15,12 @@ public class Enemy extends GameObject {
 
     public Enemy(int x, int y) {
         super(x, y, "dino.png", "grass.png");
-        direction = 1;
+        direction = 2;
     }
 
     @Override
     public void draw()  {
-        if (++count%50 == 0){
+        if (++count%5 == 0){
             System.out.println("30: " + Render.count);
 
             moveForward();

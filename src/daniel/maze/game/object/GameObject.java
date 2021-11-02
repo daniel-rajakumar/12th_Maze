@@ -55,9 +55,13 @@ public abstract class GameObject {
 
         img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
         img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
-        img_width = PIXEL_SIZE;
-        img_height = PIXEL_SIZE;
         Render.graphics.drawImage(rotate(foregroundImage, deg), img_x, img_y, img_width, img_height, null);
+        try {
+            
+            // Thread.sleep(1000);
+        } catch (Exception e) {
+            //TODO: handle exception
+        }
 	}
 
 
