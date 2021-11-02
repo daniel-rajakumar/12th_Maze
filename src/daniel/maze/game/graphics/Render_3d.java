@@ -92,25 +92,28 @@ public class Render_3d {
             GameObject obj_right = App.maze.whatIsIn(player.getX(), player.getY());
             switch (player.getDirection()){
                 case 0: 
-                    obj_left = App.maze.whatIsIn(player.getX() - 1, player.getY() - i); 
+                    obj_left  = App.maze.whatIsIn(player.getX() - 1, player.getY() - i); 
                     obj_right = App.maze.whatIsIn(player.getX() + 1, player.getY() - i); 
                     break; 
+
                 case 1: 
-                    obj_left = App.maze.whatIsIn(player.getX() + i, player.getY() - 1); 
+                    obj_left  = App.maze.whatIsIn(player.getX() + i, player.getY() - 1); 
                     obj_right = App.maze.whatIsIn(player.getX() + i, player.getY() + 1); 
                     break; 
+
                 case 2: 
-                    obj_left = App.maze.whatIsIn(player.getX() + 1, player.getY() + i); 
+                    obj_left  = App.maze.whatIsIn(player.getX() + 1, player.getY() + i); 
                     obj_right = App.maze.whatIsIn(player.getX() - 1, player.getY() + i); 
                     break; 
+
                 case 3: 
-                    obj_left = App.maze.whatIsIn(player.getX() - i, player.getY() + 1); 
+                    obj_left  = App.maze.whatIsIn(player.getX() - i, player.getY() + 1); 
                     obj_right = App.maze.whatIsIn(player.getX() - i, player.getY() - 1); 
                     break; 
             }
 
 
-            left = obj_left instanceof Grass;
+            left  = obj_left instanceof Grass;
             right = obj_right instanceof Grass;
 
             renderObjects(left, right);
