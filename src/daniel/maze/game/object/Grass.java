@@ -26,4 +26,5 @@ public class Grass extends GameObject {
         Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
     }
 
+
 }

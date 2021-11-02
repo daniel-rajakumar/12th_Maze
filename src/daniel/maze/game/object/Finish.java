@@ -13,7 +13,7 @@ import daniel.maze.game.graphics.Render;
 public class Finish extends GameObject {
 
     public Finish(int x, int y) {
-        super(x, y, "grass.png", "pizza.png");
+        super(x, y, "pizza.png", "grass.png");
     }
 
     @Override
@@ -26,5 +26,6 @@ public class Finish extends GameObject {
         Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
         Render.graphics.drawImage(foregroundImage, img_x, img_y, img_width, img_height, null);
     }
+
 
 }

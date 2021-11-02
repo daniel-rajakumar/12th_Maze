@@ -13,7 +13,8 @@ import daniel.maze.game.graphics.Render;
 public class Enemy extends GameObject {
 
     public Enemy(int x, int y) {
-        super(x, y, "grass.png", "dino.png");
+        super(x, y, "dino.png", "grass.png");
+        direction = 1;
     }
 
     @Override
@@ -23,8 +24,14 @@ public class Enemy extends GameObject {
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
 
-        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
-        Render.graphics.drawImage(foregroundImage, img_x, img_y, img_width, img_height, null);
+
+        // rotate image based on the player direction
+        switch (getDirection()){
+            case 0: rotateImage(90 * 0); break;
+            case 1: rotateImage(90 * 1); break;
+            case 2: rotateImage(90 * 2); break;
+            case 3: rotateImage(90 * 3); break;
+        }
     }
 
 }
