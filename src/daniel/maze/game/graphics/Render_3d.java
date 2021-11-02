@@ -61,8 +61,8 @@ public class Render_3d {
             poly_x_3 = 150 + shrink * i; poly_y_3 = 650 - shrink * i;
             poly_x_4 = 100 + shrink * i; poly_y_4 = 700 - shrink * i;
 
-            int[] xLocs =   {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
-            int[] yLocs =   {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
+            int[] xLocs   = {poly_x_1, poly_x_2, poly_x_3, poly_x_4};
+            int[] yLocs   = {poly_y_1, poly_y_2, poly_y_3, poly_y_4};
             int[] xLocs_2 = {poly_y_4, poly_y_3, poly_x_3, poly_x_4};
             int[] yLocs_2 = {poly_y_4, poly_y_3, poly_y_3, poly_y_4};
             int[] xLocs_3 = {poly_x_3, poly_y_2, poly_y_3, poly_y_3};
@@ -112,14 +112,9 @@ public class Render_3d {
                     break; 
             }
 
-
-            // left  = obj_left instanceof Grass || obj_left instanceof Enemy;
-            // right = obj_right instanceof Grass || obj_right instanceof Enemy;
-
             left  = !(obj_left  instanceof Water || obj_left  == null);
             right = !(obj_right instanceof Water || obj_right == null);
 
-            // System.out.printf("122: left: %s | right: %s\n", left, right);
             System.out.printf("122: renderCount: %s\n", Render.count);
 
             renderObjects(left, right);
@@ -144,8 +139,6 @@ public class Render_3d {
         if (leftDoor)  Render.graphics.fill(door_left);
         if (rightDoor) Render.graphics.fill(door_right);
     }
-
-
 
 
     void renderObjects_outline(boolean leftDoor, boolean rightDoor){

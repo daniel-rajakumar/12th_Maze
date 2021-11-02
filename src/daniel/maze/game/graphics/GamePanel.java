@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import daniel.maze.game.App;
 import daniel.maze.game.inputEvents.PlayerMovement;
-import daniel.maze.game.maze.Maze;
 
 /**
  *  The core class of the game graphics using swing.
@@ -32,7 +31,6 @@ public class GamePanel extends JPanel  {
         try {
             startRepaint(10); //start a new threat with 10 milliSeconds call
             render = new Render(new Render_2d(), new Render_3d());
-
         } catch (Exception e) { e.printStackTrace(); }
     }
 
@@ -49,23 +47,19 @@ public class GamePanel extends JPanel  {
             if (App.maze.getIs3D()) render.render3DLevel();
             else                    render.render2DLevel();
             
-        } catch (NullPointerException e) { 
-            System.out.println("Nothing to render on the screen");
-
-        } catch (IOException e) { 
-            e.printStackTrace(); 
-        }
+        } catch (NullPointerException e) { System.out.println("Nothing to render on the screen");
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
 
     /**
      *  Refresh the game for every given milliseconds
      */
-    public void startRepaint(int milliSeconds){
+    public void startRepaint(int milliSeconds) {
 
         //create, schedule, and start the refresher
         new Timer().schedule(new TimerTask() {
-            public void run(){
+            public void run() {
                 repaint();
                 Render.count++;
             }
