@@ -13,7 +13,7 @@ import daniel.maze.game.graphics.Render;
 
 // this class is the parent class of all the 2D-objects in this game from explorer to walls. 
 public abstract class GameObject {
-    protected int x, y;
+    protected int fx, fy, bx, by;
     protected final int PIXEL_SIZE = 40;
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
@@ -24,8 +24,10 @@ public abstract class GameObject {
     }
 
     GameObject(int x, int y, String foregroundFile, String backgroundFile){
-        this.x = x;
-        this.y = y;
+        this.fx = x;
+        this.fy = y;
+        this.bx = x;
+        this.by = y;
         try {
             backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
             foregroundImage = ImageIO.read(new File(App.PATH_IMG + foregroundFile));
@@ -37,15 +39,24 @@ public abstract class GameObject {
 
     public abstract void draw();
 
-    public int getX() { return x; }
-    public int getY() { return y; }
+    public int getX() { return fx; }
+    public int getY() { return fy; }
 
 
     /**************************************** 
      ******** for movable objects ***********
      ****************************************/
 	public void rotateImage(int deg) {
-        Render.graphics.drawImage(rotate(backgroundImage, deg), img_x, img_y, img_width, img_height, null);
+        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
+
+        img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
         Render.graphics.drawImage(rotate(foregroundImage, deg), img_x, img_y, img_width, img_height, null);
 	}
 
@@ -91,10 +102,10 @@ public abstract class GameObject {
         if (!canMoveForward()) return;
 
         switch (direction){
-            case 0: y--; break;
-            case 1: x++; break;
-            case 2: y++; break;
-            case 3: x--; break;
+            case 0: fy--; break;
+            case 1: fx++; break;
+            case 2: fy++; break;
+            case 3: fx--; break;
         }
     }
 
@@ -105,10 +116,10 @@ public abstract class GameObject {
         GameObject obj;
 
         switch (direction) {
-            case 0 : obj = App.maze.whatIsIn(x, y - 1); break;
-            case 1 : obj = App.maze.whatIsIn(x + 1, y); break;
-            case 2 : obj = App.maze.whatIsIn(x, y + 1); break;
-            case 3 : obj = App.maze.whatIsIn(x - 1, y); break;
+            case 0 : obj = App.maze.whatIsIn(fx, fy - 1); break;
+            case 1 : obj = App.maze.whatIsIn(fx + 1, fy); break;
+            case 2 : obj = App.maze.whatIsIn(fx, fy + 1); break;
+            case 3 : obj = App.maze.whatIsIn(fx - 1, fy); break;
             default: obj = null;
         }
 

@@ -19,7 +19,7 @@ public class Player extends GameObject {
 
 
     public Player(int x, int y) throws IOException {
-        super(x, y, "blob.png");
+        super(x, y, "blob.png", "grass.png");
 
         // direction = 0;
         didWin = false;
@@ -31,11 +31,6 @@ public class Player extends GameObject {
 
     @Override
     public void draw() {
-        img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
-        img_width = PIXEL_SIZE;
-        img_height = PIXEL_SIZE;
-
         // rotate image based on the player direction
         switch (getDirection()){
             case 0: rotateImage(90 * 0); break;

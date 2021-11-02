@@ -20,12 +20,6 @@ public class Enemy extends GameObject {
 
     @Override
     public void draw()  {
-        img_x = (x * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (y * PIXEL_SIZE) + PIXEL_SIZE;
-        img_width = PIXEL_SIZE;
-        img_height = PIXEL_SIZE;
-
-
         if (++count%50 == 0){
             System.out.println("30: " + Render.count);
 
@@ -33,32 +27,32 @@ public class Enemy extends GameObject {
 
             boolean left, right, front;
 
-            GameObject obj_front = App.maze.whatIsIn(x, y);
-            GameObject obj_left = App.maze.whatIsIn(x, y);
-            GameObject obj_right = App.maze.whatIsIn(x, y);
+            GameObject obj_front = App.maze.whatIsIn(fx, fy);
+            GameObject obj_left = App.maze.whatIsIn(fx, fy);
+            GameObject obj_right = App.maze.whatIsIn(fx, fy);
             switch (getDirection()){
                 case 0: 
-                    obj_front = App.maze.whatIsIn(x, y - 1);
-                    obj_left  = App.maze.whatIsIn(x - 1, y); 
-                    obj_right = App.maze.whatIsIn(x + 1, y); 
+                    obj_front = App.maze.whatIsIn(fx, fy - 1);
+                    obj_left  = App.maze.whatIsIn(fx - 1, fy); 
+                    obj_right = App.maze.whatIsIn(fx + 1, fy); 
                     break; 
 
                 case 1: 
-                    obj_front = App.maze.whatIsIn(x + 1, y);
-                    obj_left  = App.maze.whatIsIn(x, y - 1); 
-                    obj_right = App.maze.whatIsIn(x, y + 1); 
+                    obj_front = App.maze.whatIsIn(fx + 1, fy);
+                    obj_left  = App.maze.whatIsIn(fx, fy - 1); 
+                    obj_right = App.maze.whatIsIn(fx, fy + 1); 
                     break; 
 
                 case 2: 
-                    obj_front = App.maze.whatIsIn(x, y + 1);
-                    obj_left  = App.maze.whatIsIn(x + 1, y); 
-                    obj_right = App.maze.whatIsIn(x - 1, y); 
+                    obj_front = App.maze.whatIsIn(fx, fy + 1);
+                    obj_left  = App.maze.whatIsIn(fx + 1, fy); 
+                    obj_right = App.maze.whatIsIn(fx - 1, fy); 
                     break; 
 
                 case 3: 
-                    obj_front = App.maze.whatIsIn(x - 1, y);
-                    obj_left  = App.maze.whatIsIn(x, y + 1); 
-                    obj_right = App.maze.whatIsIn(x, y - 1); 
+                    obj_front = App.maze.whatIsIn(fx - 1, fy);
+                    obj_left  = App.maze.whatIsIn(fx, fy + 1); 
+                    obj_right = App.maze.whatIsIn(fx, fy - 1); 
                     break; 
             }
 
