@@ -20,6 +20,7 @@ import daniel.maze.game.object.Water;
 public class Render {
 
     public static Graphics2D graphics;
+    public static long count = 0;
     Render_2d render_2d;
     Render_3d render_3d;
 

@@ -113,8 +113,14 @@ public class Render_3d {
             }
 
 
-            left  = obj_left instanceof Grass;
-            right = obj_right instanceof Grass;
+            // left  = obj_left instanceof Grass || obj_left instanceof Enemy;
+            // right = obj_right instanceof Grass || obj_right instanceof Enemy;
+
+            left  = !(obj_left  instanceof Water || obj_left  == null);
+            right = !(obj_right instanceof Water || obj_right == null);
+
+            // System.out.printf("122: left: %s | right: %s\n", left, right);
+            System.out.printf("122: renderCount: %s\n", Render.count);
 
             renderObjects(left, right);
             renderObjects_outline(left, right);

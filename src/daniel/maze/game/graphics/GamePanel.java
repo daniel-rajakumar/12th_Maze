@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 import daniel.maze.game.App;
 import daniel.maze.game.inputEvents.PlayerMovement;
+import daniel.maze.game.maze.Maze;
 
 /**
  *  The core class of the game graphics using swing.
@@ -66,6 +67,7 @@ public class GamePanel extends JPanel  {
         new Timer().schedule(new TimerTask() {
             public void run(){
                 repaint();
+                Render.count++;
             }
         }, 0, milliSeconds);
     }
