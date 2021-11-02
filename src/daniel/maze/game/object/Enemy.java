@@ -26,7 +26,7 @@ public class Enemy extends GameObject {
         img_height = PIXEL_SIZE;
 
 
-        if (++count%10 == 0){
+        if (++count%50 == 0){
             System.out.println("30: " + Render.count);
 
             moveForward();
@@ -73,55 +73,29 @@ public class Enemy extends GameObject {
 
             if (!left && !front && right) {
                 turnRight();
-
-            }  
+            } 
             if (left && !front && !right){
                 turnLeft();
             } 
-
             if (left && !front && right){
                 switch(random(0, 1)){
                     case 0: turnLeft(); break;
                     case 1: turnRight(); break;
                 }
-            }
-
+            } 
             if (!left && !front && !right){
                 turnBack();
             } 
-
             if (left && front && !right){
-                if (random(0, 5) == 0){
+                if (random(0, 2) == 0){
                     turnLeft();
                 }
-            }
-
+            } 
             if (!left && front && right){
-                if (random(0, 5) == 0){
+                if (random(0, 2) == 0){
                     turnRight();
                 }
             }
-
-            // if (left && front && right){
-            //     switch(random(0, 2)){
-            //         case 0: turnLeft();
-            //         case 1: turnRight();
-            //     }
-
-
-            // } if (!left && front && right){
-            //     if (random(0, 5) == 0){
-            //         turnRight();
-            //     }
-
-
-            // if (left || right){
-            //     switch (random(0, 2)){
-            //         case 0: turnLeft(); break;
-            //         case 1: turnRight(); break;
-            //         // case 2: turnBack(); break;
-            //     }
-            // } 
         }
 
 
