@@ -17,7 +17,7 @@ public class Finish extends GameObject {
     }
 
     @Override
-    public void draw() {
+    public void drawBg() {
         img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
         img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
         img_width = PIXEL_SIZE;
@@ -25,6 +25,12 @@ public class Finish extends GameObject {
 
         Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
         Render.graphics.drawImage(foregroundImage, img_x, img_y, img_width, img_height, null);
+    }
+
+    @Override
+    public void drawFg() {
+        // TODO Auto-generated method stub
+        
     }
 
 

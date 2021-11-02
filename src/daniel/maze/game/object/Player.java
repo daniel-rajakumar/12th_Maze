@@ -30,13 +30,24 @@ public class Player extends GameObject {
     }
 
     @Override
-    public void draw() {
+    public void drawBg() {
+        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
+    }
+
+    @Override
+    public void drawFg() {
         switch (getDirection()){
             case 0: rotateImage(90 * 0); break;
             case 1: rotateImage(90 * 1); break;
             case 2: rotateImage(90 * 2); break;
             case 3: rotateImage(90 * 3); break;
         }
+        
     }
 
     

@@ -37,7 +37,8 @@ public abstract class GameObject {
         }
     }
 
-    public abstract void draw();
+    public abstract void drawBg();
+    public abstract void drawFg();
 
     public int getX() { return fx; }
     public int getY() { return fy; }
@@ -47,21 +48,11 @@ public abstract class GameObject {
      ******** for movable objects ***********
      ****************************************/
 	public void rotateImage(int deg) {
-        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
-        img_width = PIXEL_SIZE;
-        img_height = PIXEL_SIZE;
-        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
-
         img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
         img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
         Render.graphics.drawImage(rotate(foregroundImage, deg), img_x, img_y, img_width, img_height, null);
-        try {
-            
-            // Thread.sleep(1000);
-        } catch (Exception e) {
-            //TODO: handle exception
-        }
 	}
 
 

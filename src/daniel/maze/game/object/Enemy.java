@@ -18,8 +18,24 @@ public class Enemy extends GameObject {
         direction = 2;
     }
 
+
+    int random(int from, int to){
+        return (int)(Math.random() * (to - from + 1)) + from;
+    }
+
+
     @Override
-    public void draw()  {
+    public void drawBg() {
+        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
+    }
+
+
+    @Override
+    public void drawFg() {
         if (++count%5 == 0){
             System.out.println("30: " + Render.count);
 
@@ -103,10 +119,7 @@ public class Enemy extends GameObject {
             case 2: rotateImage(90 * 3); break;
             case 3: rotateImage(90 * 0); break;
         }
-    }
-
-    int random(int from, int to){
-        return (int)(Math.random() * (to - from + 1)) + from;
+        
     }
 
 }
