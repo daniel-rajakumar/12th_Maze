@@ -11,6 +11,7 @@ import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
 
 public class Enemy extends GameObject {
+    int count = 0;
 
     public Enemy(int x, int y) {
         super(x, y, "dino.png", "grass.png");
@@ -25,9 +26,7 @@ public class Enemy extends GameObject {
         img_height = PIXEL_SIZE;
 
 
-
-
-        if (Render.count%50 == 1){
+        if (++count%10 == 0){
             System.out.println("30: " + Render.count);
 
             moveForward();
@@ -67,21 +66,62 @@ public class Enemy extends GameObject {
             // right = !(obj_right instanceof Water || obj_right == null);
             left  = obj_left  instanceof Grass;
             right = obj_right instanceof Grass;
-            front = obj_front instanceof Water || obj_front == null;
+            front = !(obj_front instanceof Water || obj_front == null);
 
+            
+            System.out.println("73: moving! " + count);
 
+            if (!left && !front && right) {
+                turnRight();
 
-            if (left || right){
-                if (random(0, 1) == 0){
+            }  
+            if (left && !front && !right){
+                turnLeft();
+            } 
+
+            if (left && !front && right){
+                switch(random(0, 1)){
+                    case 0: turnLeft(); break;
+                    case 1: turnRight(); break;
+                }
+            }
+
+            if (!left && !front && !right){
+                turnBack();
+            } 
+
+            if (left && front && !right){
+                if (random(0, 5) == 0){
                     turnLeft();
-                } else {
+                }
+            }
+
+            if (!left && front && right){
+                if (random(0, 5) == 0){
                     turnRight();
                 }
-            } 
-            if (front){
-                turnLeft();
-                turnLeft();
             }
+
+            // if (left && front && right){
+            //     switch(random(0, 2)){
+            //         case 0: turnLeft();
+            //         case 1: turnRight();
+            //     }
+
+
+            // } if (!left && front && right){
+            //     if (random(0, 5) == 0){
+            //         turnRight();
+            //     }
+
+
+            // if (left || right){
+            //     switch (random(0, 2)){
+            //         case 0: turnLeft(); break;
+            //         case 1: turnRight(); break;
+            //         // case 2: turnBack(); break;
+            //     }
+            // } 
         }
 
 

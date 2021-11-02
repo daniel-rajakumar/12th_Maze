@@ -78,6 +78,11 @@ public abstract class GameObject {
     }
 
 
+    public void turnBack(){
+        direction++;
+        if (++direction > 3) direction = 0;
+    }
+
 
     /**
      * move player one box forward based on the player's location. 
