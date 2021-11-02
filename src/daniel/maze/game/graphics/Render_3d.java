@@ -41,8 +41,8 @@ public class Render_3d {
         GameObject obj = null;
 
         for (int i = 5; i >= 0; i--){
-            int x = player.getX();
-            int y = player.getY();
+            int x = player.getForegroundX();
+            int y = player.getForegroundY();
             switch (player.getDirection()){
                 case 0: obj = App.maze.whatIsIn(x, y - i); break;
                 case 1: obj = App.maze.whatIsIn(x + i, y); break;
@@ -87,28 +87,28 @@ public class Render_3d {
 
             // System.out.println("front: " + App.maze.whatIsIn(player.getX(), player.getY() - 1).getClass().getSimpleName());
 
-            GameObject obj_front = App.maze.whatIsIn(player.getX(), player.getY());
-            GameObject obj_left = App.maze.whatIsIn(player.getX(), player.getY());
-            GameObject obj_right = App.maze.whatIsIn(player.getX(), player.getY());
+            GameObject obj_front = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
+            GameObject obj_left = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
+            GameObject obj_right = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
             switch (player.getDirection()){
                 case 0: 
-                    obj_left  = App.maze.whatIsIn(player.getX() - 1, player.getY() - i); 
-                    obj_right = App.maze.whatIsIn(player.getX() + 1, player.getY() - i); 
+                    obj_left  = App.maze.whatIsIn(player.getForegroundX() - 1, player.getForegroundY() - i); 
+                    obj_right = App.maze.whatIsIn(player.getForegroundX() + 1, player.getForegroundY() - i); 
                     break; 
 
                 case 1: 
-                    obj_left  = App.maze.whatIsIn(player.getX() + i, player.getY() - 1); 
-                    obj_right = App.maze.whatIsIn(player.getX() + i, player.getY() + 1); 
+                    obj_left  = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY() - 1); 
+                    obj_right = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY() + 1); 
                     break; 
 
                 case 2: 
-                    obj_left  = App.maze.whatIsIn(player.getX() + 1, player.getY() + i); 
-                    obj_right = App.maze.whatIsIn(player.getX() - 1, player.getY() + i); 
+                    obj_left  = App.maze.whatIsIn(player.getForegroundX() + 1, player.getForegroundY() + i); 
+                    obj_right = App.maze.whatIsIn(player.getForegroundX() - 1, player.getForegroundY() + i); 
                     break; 
 
                 case 3: 
-                    obj_left  = App.maze.whatIsIn(player.getX() - i, player.getY() + 1); 
-                    obj_right = App.maze.whatIsIn(player.getX() - i, player.getY() - 1); 
+                    obj_left  = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY() + 1); 
+                    obj_right = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY() - 1); 
                     break; 
             }
 

@@ -29,8 +29,8 @@ public abstract class GameObject {
         this.bx = x;
         this.by = y;
         try {
-            backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
-            foregroundImage = ImageIO.read(new File(App.PATH_IMG + foregroundFile));
+            this.backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
+            this.foregroundImage = ImageIO.read(new File(App.PATH_IMG + foregroundFile));
         } catch (IIOException e) {
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,19 +40,27 @@ public abstract class GameObject {
     public abstract void drawBg();
     public abstract void drawFg();
 
-    public int getX() { return fx; }
-    public int getY() { return fy; }
+    public int getForegroundX() { return fx; }
+    public int getForegroundY() { return fy; }
 
 
     /**************************************** 
      ******** for movable objects ***********
      ****************************************/
-	public void rotateImage(int deg) {
+	public void drawForeground(int deg) {
         img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
         img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
         Render.graphics.drawImage(rotate(foregroundImage, deg), img_x, img_y, img_width, img_height, null);
+	}
+
+	public void drawBackground() {
+        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
+        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
+        img_width = PIXEL_SIZE;
+        img_height = PIXEL_SIZE;
+        Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
 	}
 
 
@@ -83,12 +91,10 @@ public abstract class GameObject {
         if (++direction > 3) direction = 0;
     }
 
-
     public void turnBack(){
         direction++;
         if (++direction > 3) direction = 0;
     }
-
 
     /**
      * move player one box forward based on the player's location. 
@@ -120,9 +126,6 @@ public abstract class GameObject {
 
         return !(obj instanceof Water || obj == null);
     }
-
-
-
 
 }
 
