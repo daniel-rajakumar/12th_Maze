@@ -82,10 +82,13 @@ public class Maze {
         // list_enemy.remove(0);
 
         if (obj instanceof Enemy){
-            list_enemy.remove(0);
+            for (int i = 0; i < list_enemy.size(); i++){
+                if (list_enemy.get(i).equals(obj)){
+                    list_enemy.remove(i);
+                }
+            }
             obj_map[y][x] = new Grass(x, y);
-            Maze.list_grass.add((Grass)obj_map[y][x]);
-
+            Maze.list_grass.add((Grass) obj_map[y][x]);
             System.out.println("84: hello2");
 
         }
