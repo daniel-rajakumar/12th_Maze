@@ -18,8 +18,8 @@ public class Grass extends GameObject {
 
     @Override
     public void drawBg() {
-        img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
+        img_x = (fx * PIXEL_SIZE);
+        img_y = (fy * PIXEL_SIZE);
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
 

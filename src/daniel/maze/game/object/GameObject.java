@@ -26,6 +26,9 @@ public abstract class GameObject {
     }
 
     GameObject(int x, int y, String foregroundFile, String backgroundFile){
+        shift_x = 0;
+        shift_y = 0;
+
         this.fx = x + shift_x;
         this.fy = y + shift_y;
         this.bx = x + shift_x;
@@ -37,8 +40,6 @@ public abstract class GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        shift_x = -1;
-        shift_y = -1;
     }
 
     public abstract void drawBg();
@@ -52,16 +53,16 @@ public abstract class GameObject {
      ******** for movable objects ***********
      ****************************************/
 	public void drawForeground(int deg) {
-        img_x = (fx * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (fy * PIXEL_SIZE) + PIXEL_SIZE;
+        img_x = (fx * PIXEL_SIZE);
+        img_y = (fy * PIXEL_SIZE);
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
         Render.graphics.drawImage(rotate(foregroundImage, deg), img_x, img_y, img_width, img_height, null);
 	}
 
 	public void drawBackground() {
-        img_x = (bx * PIXEL_SIZE) + PIXEL_SIZE;
-        img_y = (by * PIXEL_SIZE) + PIXEL_SIZE;
+        img_x = (bx * PIXEL_SIZE);
+        img_y = (by * PIXEL_SIZE);
         img_width = PIXEL_SIZE;
         img_height = PIXEL_SIZE;
         Render.graphics.drawImage(backgroundImage, img_x, img_y, img_width, img_height, null);
