@@ -33,7 +33,7 @@ public class Enemy extends GameObject {
     boolean left, right, front;
     @Override
     public void drawFg() {
-        if (++count%5 == 0){
+        if (++count%50 == 0){
             System.out.println("30: " + Render.count);
 
             moveForward();
@@ -74,6 +74,7 @@ public class Enemy extends GameObject {
 
             turnIfNeeded();
             
+
             System.out.println("73: moving! " + count);
 
         }

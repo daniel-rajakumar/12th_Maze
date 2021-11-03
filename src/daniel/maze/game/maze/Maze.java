@@ -72,6 +72,29 @@ public class Maze {
         }
     }
 
+
+    public void remove(int x, int y){
+        GameObject obj = obj_map[y][x];
+
+        // System.out.printf("82: %s -> (%s, %s)\n",obj, x, y);
+
+        // obj_map[y][x] = new Grass(x, y);
+        // list_enemy.remove(0);
+
+        if (obj instanceof Enemy){
+            list_enemy.remove(0);
+            obj_map[y][x] = new Grass(x, y);
+            Maze.list_grass.add((Grass)obj_map[y][x]);
+
+            System.out.println("84: hello2");
+
+        }
+    }
+
+
+
+
+
     public GameObject whatIsIn(int x, int y){
         if (x >= width || y >= height || x < 0 || y < 0) {
             System.out.println("out of bounce!");
