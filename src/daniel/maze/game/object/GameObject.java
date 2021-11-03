@@ -19,16 +19,17 @@ public abstract class GameObject {
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
     protected int direction;
+    public static int shift_x = 4, shift_y = 4;
 
     GameObject(int x, int y, String backgroundFile){
         this(x, y, null, backgroundFile);
     }
 
     GameObject(int x, int y, String foregroundFile, String backgroundFile){
-        this.fx = x;
-        this.fy = y;
-        this.bx = x;
-        this.by = y;
+        this.fx = x + shift_x;
+        this.fy = y + shift_y;
+        this.bx = x + shift_x;
+        this.by = y + shift_y;
         try {
             this.backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
             this.foregroundImage = ImageIO.read(new File(App.PATH_IMG + foregroundFile));

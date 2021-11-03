@@ -90,6 +90,8 @@ public class Maze {
 
 
     public GameObject whatIsIn(int x, int y){
+        x -= GameObject.shift_x;
+        y -= GameObject.shift_y;
         if (x >= width || y >= height || x < 0 || y < 0) {
             System.out.println("out of bounce!");
             return null;
