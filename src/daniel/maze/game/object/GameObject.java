@@ -19,7 +19,7 @@ public abstract class GameObject {
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
     protected int direction;
-    public static int shift_x = 4, shift_y = 4;
+    public static int shift_x, shift_y;
 
     GameObject(int x, int y, String backgroundFile){
         this(x, y, null, backgroundFile);
@@ -37,6 +37,8 @@ public abstract class GameObject {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        shift_x = -1;
+        shift_y = -1;
     }
 
     public abstract void drawBg();

@@ -29,6 +29,10 @@ public class Render_2d {
             // for (Finish finish: Maze.list_finish)   finish.drawFg();
             // for (Player player: Maze.list_player)   player.drawFg();
 
+
+            System.out.println("33: (" + Maze.list_player.get(0).getForegroundX() + ", " + Maze.list_player.get(0).getForegroundY() + ") ");
+
+            
             for (int i = 0; i < App.maze.getMap().length; i++){
                 for (int j = 0; j < App.maze.getMap()[i].length; j++){
                     App.maze.getObj_map()[i][j].drawBg();;

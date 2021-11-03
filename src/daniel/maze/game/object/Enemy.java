@@ -1,6 +1,6 @@
 package daniel.maze.game.object;
 
-
+// gi
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
