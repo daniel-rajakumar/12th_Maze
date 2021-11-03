@@ -108,4 +108,8 @@ public class Maze {
 
     public void setMap(char[][] map) { this.char_map = map; }
 	public void setIs3D(boolean is3D) { this.is3D = is3D; }
+
+    public GameObject[][] getObj_map() {
+        return obj_map;
+    }
 }
