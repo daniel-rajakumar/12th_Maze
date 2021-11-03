@@ -74,24 +74,15 @@ public class Maze {
 
 
     public void remove(int x, int y){
-        GameObject obj = obj_map[y][x];
-
-        // System.out.printf("82: %s -> (%s, %s)\n",obj, x, y);
-
-        // obj_map[y][x] = new Grass(x, y);
-        // list_enemy.remove(0);
-
-        if (obj instanceof Enemy){
+        if (obj_map[y][x] instanceof Enemy){
             for (int i = 0; i < list_enemy.size(); i++){
-                if (list_enemy.get(i).equals(obj)){
+                if (list_enemy.get(i).equals(obj_map[y][x])){
                     list_enemy.remove(i);
                 }
             }
-            obj_map[y][x] = new Grass(x, y);
-            Maze.list_grass.add((Grass) obj_map[y][x]);
-            System.out.println("84: hello2");
-
         }
+        obj_map[y][x] = new Grass(x, y);
+        Maze.list_grass.add((Grass) obj_map[y][x]);
     }
 
 

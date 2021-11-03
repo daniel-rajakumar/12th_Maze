@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.Render;
+import daniel.maze.game.maze.Maze;
 
 // this class is the parent class of all the 2D-objects in this game from explorer to walls. 
 public abstract class GameObject {
@@ -108,6 +109,7 @@ public abstract class GameObject {
             case 2: fy++; break;
             case 3: fx--; break;
         }
+
     }
 
     /**
@@ -123,6 +125,7 @@ public abstract class GameObject {
             case 3 : obj = App.maze.whatIsIn(fx - 1, fy); break;
             default: obj = null;
         }
+        
 
         return !(obj instanceof Water || obj == null);
     }
