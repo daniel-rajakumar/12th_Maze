@@ -15,6 +15,8 @@ import daniel.maze.game.maze.Maze;
 // this class is the parent class of all the 2D-objects in this game from explorer to walls. 
 public abstract class GameObject {
     protected int fx, fy, bx, by;
+    protected int fx2, fy2, bx2, by2;
+    protected int x, y;
     protected final int PIXEL_SIZE = 40;
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
@@ -26,13 +28,20 @@ public abstract class GameObject {
     }
 
     GameObject(int x, int y, String foregroundFile, String backgroundFile){
-        shift_x = 0;
-        shift_y = 0;
+        shift_x = 3;
+        shift_y = 3;
 
+        this.x = x;
+        this.y = y;
         this.fx = x + shift_x;
         this.fy = y + shift_y;
         this.bx = x + shift_x;
         this.by = y + shift_y;
+        this.fx2 = x;
+        this.fy2 = y;
+        this.bx2 = x;
+        this.by2 = y;
+
         try {
             this.backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
             this.foregroundImage = ImageIO.read(new File(App.PATH_IMG + foregroundFile));
@@ -48,6 +57,13 @@ public abstract class GameObject {
     public int getForegroundX() { return fx; }
     public int getForegroundY() { return fy; }
 
+
+    public int getX() {
+        return x;
+    }
+    public int getY() {
+        return y;
+    }
 
     /**************************************** 
      ******** for movable objects ***********
@@ -108,12 +124,11 @@ public abstract class GameObject {
         if (!canMoveForward()) return;
 
         switch (direction){
-            case 0: fy--; break;
-            case 1: fx++; break;
-            case 2: fy++; break;
-            case 3: fx--; break;
+            case 0: fy--; fy2--; break;
+            case 1: fx++; fx2++; break;
+            case 2: fy++; fy2++; break;
+            case 3: fx--; fx2--; break;
         }
-
     }
 
     /**
@@ -134,6 +149,32 @@ public abstract class GameObject {
         return !(obj instanceof Water || obj == null);
     }
 
+    public void shift(){
+        this.fx = fx2 + shift_x;
+        this.fy = fy2 + shift_y;
+        this.bx = bx2 + shift_x;
+        this.by = by2 + shift_y;
+    }
+
+    public int getShift_x() {
+        return shift_x;
+    }
+    public int getShift_y() {
+        return shift_y;
+    }
+
+    public int getBx() {
+        return bx;
+    }
+    public int getBy() {
+        return by;
+    }
+    public int getFx() {
+        return fx;
+    }
+    public int getFy() {
+        return fy;
+    }
 }
 
 

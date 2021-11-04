@@ -115,7 +115,7 @@ public class Render_3d {
             left  = !(obj_left  instanceof Water || obj_left  == null);
             right = !(obj_right instanceof Water || obj_right == null);
 
-            System.out.printf("122: renderCount: %s\n", Render.count);
+            // System.out.printf("122: renderCount: %s\n", Render.count);
 
             renderObjects(left, right);
             renderObjects_outline(left, right);

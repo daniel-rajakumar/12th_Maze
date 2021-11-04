@@ -7,6 +7,7 @@ import daniel.maze.game.App;
 import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.Enemy;
 import daniel.maze.game.object.Finish;
+import daniel.maze.game.object.GameObject;
 import daniel.maze.game.object.Grass;
 import daniel.maze.game.object.Player;
 import daniel.maze.game.object.Water;
@@ -30,11 +31,29 @@ public class Render_2d {
             // for (Player player: Maze.list_player)   player.drawFg();
 
 
-            System.out.println("33: (" + Maze.list_player.get(0).getForegroundX() + ", " + Maze.list_player.get(0).getForegroundY() + ") ");
+            // int x = Maze.list_player.get(0).getForegroundX() - Maze.list_player.get(0).getX();
+            // int y = Maze.list_player.get(0).getForegroundY() - Maze.list_player.get(0).getY();
+            // int x = Maze.list_player.get(0).getX() - Maze.list_player.get(0).getForegroundX();
+            // int y = Maze.list_player.get(0).getY() - Maze.list_player.get(0).getForegroundY();
+            int x = Maze.list_player.get(0).getForegroundX() - GameObject.shift_x;
+            int y = Maze.list_player.get(0).getForegroundY() - GameObject.shift_y;
 
+
+            int x2 = x;
+            int y2 = y;
+            System.out.println("33: (" + x2 + ", " + y2 + ") ");
+
+
+
+            GameObject.shift_x = (-x + 1); 
+            GameObject.shift_y = (-y + 1);
+
+
+            
             
             for (int i = 0; i < App.maze.getMap().length; i++){
                 for (int j = 0; j < App.maze.getMap()[i].length; j++){
+                    App.maze.getObj_map()[i][j].shift();
                     App.maze.getObj_map()[i][j].drawBg();;
                 }
             }
