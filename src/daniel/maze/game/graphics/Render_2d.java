@@ -39,15 +39,16 @@ public class Render_2d {
             int y = Maze.list_player.get(0).getForegroundY() - GameObject.shift_y;
 
 
-            int x2 = x;
-            int y2 = y;
-            System.out.println("33: (" + x2 + ", " + y2 + ") ");
 
 
+            GameObject.shift_y = 0; 
+            GameObject.shift_x = 0; 
 
-            GameObject.shift_x = (-x + 1); 
-            GameObject.shift_y = (-y + 1);
+            int size = 10;
+            if (x > size) GameObject.shift_x = (-x + 1 + size); 
+            if (y > size) GameObject.shift_y = (-y + 1 + size); 
 
+            System.out.println("33: (" + x + ", " + y + ") ");
 
             
             
