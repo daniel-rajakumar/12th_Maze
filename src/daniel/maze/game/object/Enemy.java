@@ -33,14 +33,13 @@ public class Enemy extends GameObject {
     boolean left, right, front;
     @Override
     public void drawFg() {
-        if (++count%50 == 0){
+        if (++count%100 == 0){
             System.out.println("30: " + Render.count);
 
             moveForward();
 
-
             GameObject obj_front = App.maze.whatIsIn(fx, fy);
-            GameObject obj_left = App.maze.whatIsIn(fx, fy);
+            GameObject obj_left  = App.maze.whatIsIn(fx, fy);
             GameObject obj_right = App.maze.whatIsIn(fx, fy);
             switch (getDirection()){
                 case 0: 

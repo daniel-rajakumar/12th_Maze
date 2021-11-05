@@ -1,5 +1,6 @@
 package daniel.maze.game.graphics;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import javax.swing.JPanel;
 
 import daniel.maze.game.App;
 import daniel.maze.game.inputEvents.PlayerMovement;
+import daniel.maze.game.object.GameObject;
 
 /**
  *  The core class of the game graphics using swing.
@@ -21,7 +23,8 @@ public class GamePanel extends JPanel  {
 
     public GamePanel(){
         frame = new JFrame("A maze program");
-        frame.setSize(1150, 800);
+        frame.setSize((40 * GameObject.PIXEL_SIZE) - 3, (25 * GameObject.PIXEL_SIZE) + 17);
+        // frame.setSize((1200) - 3, (800) + 17);
         frame.add(this);
         frame.setResizable(false);
         frame.addKeyListener(new PlayerMovement()); //all the keyboard movements for the player

@@ -17,7 +17,7 @@ public abstract class GameObject {
     protected int fx, fy, bx, by;
     protected int fx2, fy2, bx2, by2;
     protected int x, y;
-    protected final int PIXEL_SIZE = 40;
+    public static final int PIXEL_SIZE = 40;
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
     protected int direction;

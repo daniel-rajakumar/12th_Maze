@@ -37,6 +37,7 @@ public class Player extends GameObject {
 
     @Override
     public void drawFg() {
+        // shift();
         switch (getDirection()){
             case 0: drawForeground(90 * 0); break;
             case 1: drawForeground(90 * 1); break;
@@ -45,8 +46,9 @@ public class Player extends GameObject {
         }
 
         for (Enemy enemy: Maze.list_enemy){
-            if ((enemy.fx == super.fx) && (enemy.fy == super.fy)){
-                App.maze.remove(enemy.bx, enemy.by);
+            if ((enemy.fx2 == super.fx2) && (enemy.fy2 == super.fy2)){
+                App.maze.remove(enemy.bx2, enemy.by2);
+                // App.maze.remove(enemy.bx, enemy.by);
             }
         }
 

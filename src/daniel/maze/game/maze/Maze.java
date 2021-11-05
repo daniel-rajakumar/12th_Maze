@@ -65,22 +65,23 @@ public class Maze {
         switch (char_map[y][x]) {
             case 'E': Player player = new Player(x, y); obj_map[y][x] = player; list_player.add(player); break;
             case 'F': Finish finish = new Finish(x, y); obj_map[y][x] = finish; list_finish.add(finish); break;
-            case 'D': Enemy enemy = new Enemy(x, y);    obj_map[y][x] = enemy;  list_enemy.add(enemy);   break;
-            case ' ': Grass grass = new Grass(x, y);    obj_map[y][x] = grass;  list_grass.add(grass);   break;
-            case '#': Water water = new Water(x, y);    obj_map[y][x] = water;  list_water.add(water);   break;
+            case 'D': Enemy enemy   = new Enemy(x, y);  obj_map[y][x] = enemy;  list_enemy.add(enemy);   break;
+            case ' ': Grass grass   = new Grass(x, y);  obj_map[y][x] = grass;  list_grass.add(grass);   break;
+            case '#': Water water   = new Water(x, y);  obj_map[y][x] = water;  list_water.add(water);   break;
             default : System.out.println("Nothing"); 
         }
     }
 
 
     public void remove(int x, int y){
-        if (obj_map[y][x] instanceof Enemy){
-            for (int i = 0; i < list_enemy.size(); i++){
-                if (list_enemy.get(i).equals(obj_map[y][x])){
+        if (obj_map[y][x] instanceof Enemy) {
+            for (int i = 0; i < list_enemy.size(); i++) {
+                if (list_enemy.get(i).equals(obj_map[y][x])) {
                     list_enemy.remove(i);
                 }
             }
         }
+
         obj_map[y][x] = new Grass(x, y);
         Maze.list_grass.add((Grass) obj_map[y][x]);
     }
