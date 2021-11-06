@@ -40,6 +40,9 @@ public class Render_2d {
             modifyShift();
 
 
+            System.out.printf("43 -> (x: %s, y: %s)\n", GameObject.shift_x, GameObject.shift_y);
+            
+
             
             for (int i = 0; i < App.maze.getMap().length; i++){
                 for (int j = 0; j < App.maze.getMap()[i].length; j++){
@@ -47,6 +50,8 @@ public class Render_2d {
                     App.maze.getObj_map()[i][j].drawBg();
                 }
             }
+
+            // try { Thread.sleep(1000); } catch (Exception e) { //TODO: handle exception }
 
             for (int i = 0; i < App.maze.getMap().length; i++){
                 for (int j = 0; j < App.maze.getMap()[i].length; j++){
@@ -79,6 +84,11 @@ public class Render_2d {
 
             if      (y > num_y + sizeHeight)  GameObject.shift_y = -num_y;
             else if (y > sizeHeight)          GameObject.shift_y = (-y + 1 + sizeHeight); 
+
+
+            // GameObject.shift_x = 4; 
+            // GameObject.shift_y = 4; 
+
 
     }
 

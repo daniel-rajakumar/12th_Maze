@@ -28,8 +28,8 @@ public abstract class GameObject {
     }
 
     GameObject(int x, int y, String foregroundFile, String backgroundFile){
-        shift_x = 0;
-        shift_y = 0;
+        // shift_x = 0;
+        // shift_y = 0;
 
         this.x = x;
         this.y = y;

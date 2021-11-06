@@ -46,7 +46,7 @@ public class Player extends GameObject {
         }
 
         for (Enemy enemy: Maze.list_enemy){
-            if ((enemy.fx2 == super.fx2) && (enemy.fy2 == super.fy2)){
+            if ((enemy.fx == super.fx) && (enemy.fy == super.fy)){
                 App.maze.remove(enemy.bx2, enemy.by2);
                 // App.maze.remove(enemy.bx, enemy.by);
             }

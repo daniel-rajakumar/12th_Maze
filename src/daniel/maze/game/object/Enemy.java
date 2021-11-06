@@ -34,8 +34,6 @@ public class Enemy extends GameObject {
     @Override
     public void drawFg() {
         if (++count%100 == 0){
-            System.out.println("30: " + Render.count);
-
             moveForward();
 
             GameObject obj_front = App.maze.whatIsIn(fx, fy);
