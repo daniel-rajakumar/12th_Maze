@@ -14,20 +14,21 @@ public class PlayerMovement implements KeyListener  {
 
     public void keyPressed(KeyEvent arg0) {
         switch (arg0.getKeyCode()){
+            // case KeyEvent.VK_LEFT: Maze.list_player.get(0).turnLeft(); break;
+            // case KeyEvent.VK_UP: Maze.list_player.get(0).moveForward(); break;
+            // case KeyEvent.VK_RIGHT: Maze.list_player.get(0).turnRight(); break;
+            // case KeyEvent.VK_SPACE: App.maze.setIs3D(!App.maze.getIs3D());
+            case KeyEvent.VK_DOWN: Maze.list_player.get(0).moveForward(); break;
+        }
+    }
+
+    public void keyReleased(KeyEvent arg0) { 
+        switch (arg0.getKeyCode()){
             case KeyEvent.VK_LEFT: Maze.list_player.get(0).turnLeft(); break;
             case KeyEvent.VK_UP: Maze.list_player.get(0).moveForward(); break;
             case KeyEvent.VK_RIGHT: Maze.list_player.get(0).turnRight(); break;
             case KeyEvent.VK_SPACE: App.maze.setIs3D(!App.maze.getIs3D());
         }
-    }
-
-    public void keyReleased(KeyEvent arg0) { 
-        // switch (arg0.getKeyCode()){
-        //     case KeyEvent.VK_LEFT: Maze.list_player.get(0).turnLeft(); break;
-        //     case KeyEvent.VK_UP: Maze.list_player.get(0).moveForward(); break;
-        //     case KeyEvent.VK_RIGHT: Maze.list_player.get(0).turnRight(); break;
-        //     case KeyEvent.VK_SPACE: App.maze.setIs3D(!App.maze.getIs3D());
-        // }
     }
     public void keyTyped(KeyEvent arg0) { }
 

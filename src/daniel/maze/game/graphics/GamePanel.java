@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Toolkit;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,12 +24,14 @@ public class GamePanel extends JPanel  {
 
     public GamePanel(){
         frame = new JFrame("A maze program");
-        frame.setSize((40 * GameObject.PIXEL_SIZE) - 3, (25 * GameObject.PIXEL_SIZE) + 17);
+        // frame.setSize((40 * GameObject.PIXEL_SIZE) - 3, (25 * GameObject.PIXEL_SIZE) + 17);
+        frame.setSize(Toolkit.getDefaultToolkit().getScreenSize());
         // frame.setSize((1200) - 3, (800) + 17);
         frame.add(this);
         frame.setResizable(false);
         frame.addKeyListener(new PlayerMovement()); //all the keyboard movements for the player
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        // frame.setUndecorated(true);
         frame.setVisible(true);
 
         try {
@@ -55,6 +58,9 @@ public class GamePanel extends JPanel  {
     }
 
 
+    public void repaint(){
+        super.repaint();
+    }
     /**
      *  Refresh the game for every given milliseconds
      */

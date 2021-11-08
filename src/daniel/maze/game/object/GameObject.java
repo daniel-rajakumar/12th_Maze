@@ -17,7 +17,7 @@ public abstract class GameObject {
     protected int fx, fy, bx, by;
     protected int fx2, fy2, bx2, by2;
     protected int x, y;
-    public static final int PIXEL_SIZE = 40;
+    public static final int PIXEL_SIZE = 60;
     protected int img_x, img_y, img_width, img_height;
     protected BufferedImage backgroundImage, foregroundImage;
     protected int direction;
@@ -51,19 +51,8 @@ public abstract class GameObject {
         }
     }
 
-    public abstract void drawBg();
-    public abstract void drawFg();
-
-    public int getForegroundX() { return fx; }
-    public int getForegroundY() { return fy; }
 
 
-    public int getX() {
-        return x;
-    }
-    public int getY() {
-        return y;
-    }
 
     /**************************************** 
      ******** for movable objects ***********
@@ -129,6 +118,7 @@ public abstract class GameObject {
             case 2: fy++; fy2++; break;
             case 3: fx--; fx2--; break;
         }
+        
     }
 
     /**
@@ -144,7 +134,6 @@ public abstract class GameObject {
             case 3 : obj = App.maze.whatIsIn(fx - 1, fy); break;
             default: obj = null;
         }
-        
 
         return !(obj instanceof Water || obj == null);
     }
@@ -156,25 +145,22 @@ public abstract class GameObject {
         this.by = by2 + shift_y;
     }
 
-    public int getShift_x() {
-        return shift_x;
-    }
-    public int getShift_y() {
-        return shift_y;
-    }
 
-    public int getBx() {
-        return bx;
-    }
-    public int getBy() {
-        return by;
-    }
-    public int getFx() {
-        return fx;
-    }
-    public int getFy() {
-        return fy;
-    }
+    public abstract void drawBg();
+    public abstract void drawFg();
+
+
+    public int getShift_x() { return shift_x; }
+    public int getShift_y() { return shift_y; }
+    public int getBx() { return bx; }
+    public int getBy() { return by; }
+    public int getFx() { return fx; }
+    public int getFy() { return fy; }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public int getForegroundX() { return fx; }
+    public int getForegroundY() { return fy; }
+
 }
 
 
