@@ -58,6 +58,8 @@ public class Render_2d {
                     App.maze.getObj_map()[i][j].drawFg();
                 }
             }
+
+            Maze.timer.draw();
             
         } catch (ConcurrentModificationException e) {
             System.out.println("message: " + e.getMessage());

@@ -12,6 +12,7 @@ import javax.swing.text.PlainDocument;
 
 import daniel.maze.game.App;
 import daniel.maze.game.graphics.GamePanel;
+import daniel.maze.game.graphics.GameTimer;
 import daniel.maze.game.object.*;
 
 public class Maze {
@@ -29,6 +30,8 @@ public class Maze {
     public static ArrayList<Grass> list_grass;
     public static ArrayList<Player> list_player;
     public static ArrayList<Water> list_water;
+    public static GameTimer timer;
+
 
     public Maze() throws Exception {
         list_enemy = new ArrayList<>();
@@ -58,6 +61,8 @@ public class Maze {
                 setupObjects(x, y);
             }
         }
+
+        timer = new GameTimer(60);
     }
 
 
