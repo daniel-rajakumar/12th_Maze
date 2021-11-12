@@ -121,7 +121,7 @@ public abstract class GameObject {
         
         }
       
-        removeEnemyIfEaten();
+        // removeEnemyIfEaten();
     }
 
     private void removeEnemyIfEaten(){

@@ -21,20 +21,19 @@ import daniel.maze.game.object.Water;
 
 public class Render_3d {
 
-
     private Polygon leftWall, topWall, bottomWall, rightWall, frontWall; 
     private Rectangle door_left, door_right;
 
+    private int shrink = 50;
 
     Render_3d(){}
 
     public void render(){
-        int shrink = 50;
         int length = 5;
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
-        boolean left, right;
+        boolean left, right, dino;
 
 
         Player player = Maze.list_player.get(0);
@@ -123,6 +122,44 @@ public class Render_3d {
             // try { Thread.sleep(5000); } catch (Exception e) { }
         }
 
+        for (int i = 0; i < 5; i++){
+            GameObject obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
+
+            switch (player.getDirection()){
+                case 0: 
+                    obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() - i); 
+                    break; 
+
+                case 1: 
+                    obj_center = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY()); 
+                    break; 
+
+                case 2: 
+                    obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() + i); 
+                    break; 
+
+                case 3: 
+                    obj_center = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY()); 
+                    break; 
+            }
+
+            dino = (obj_center instanceof Enemy);
+
+
+            if (dino) {
+                BufferedImage img;
+                try {
+                    img = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
+                    int y = 350 + shrink - (shrink/2);
+                    int x = 250 + (shrink/2) * i;
+                    int size = 300 - shrink*i; 
+                    System.out.println("y: " + y);
+                    Render.graphics.drawImage(img, x, y, size, size, null);
+                } catch (IOException e) { e.printStackTrace(); }
+
+            }
+        }
+
     }
 
 
@@ -138,6 +175,7 @@ public class Render_3d {
 
         if (leftDoor)  Render.graphics.fill(door_left);
         if (rightDoor) Render.graphics.fill(door_right);
+
     }
 
 
@@ -148,6 +186,7 @@ public class Render_3d {
         Render.graphics.draw(bottomWall);
         Render.graphics.draw(topWall);
         Render.graphics.draw(frontWall);
+
         if (leftDoor)  Render.graphics.draw(door_left);
         if (rightDoor) Render.graphics.draw(door_right);
     }

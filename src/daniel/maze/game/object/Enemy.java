@@ -33,8 +33,8 @@ public class Enemy extends GameObject {
     boolean left, right, front;
     @Override
     public void drawFg() {
-        if (++count%10 == 0){
-            moveForward();
+        if (++count%1000 == 0){
+            // moveForward();
 
             GameObject obj_front = App.maze.whatIsIn(fx, fy);
             GameObject obj_left  = App.maze.whatIsIn(fx, fy);
@@ -79,13 +79,14 @@ public class Enemy extends GameObject {
 
 
 
-
         // rotate image based on the player direction
-        switch (getDirection()){
-            case 0: drawForeground(90 * 1); break;
-            case 1: drawForeground(90 * 2); break;
-            case 2: drawForeground(90 * 3); break;
-            case 3: drawForeground(90 * 0); break;
+        if (!App.maze.getIs3D()){
+            switch (getDirection()){
+                case 0: drawForeground(90 * 1); break;
+                case 1: drawForeground(90 * 2); break;
+                case 2: drawForeground(90 * 3); break;
+                case 3: drawForeground(90 * 0); break;
+            }
         }
         
     }
