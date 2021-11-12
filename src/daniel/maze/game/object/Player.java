@@ -45,12 +45,11 @@ public class Player extends GameObject {
             case 3: drawForeground(90 * 3); break;
         }
 
-        for (Enemy enemy: Maze.list_enemy){
-            if ((enemy.fx == super.fx) && (enemy.fy == super.fy)){
-                App.maze.remove(enemy.bx2, enemy.by2);
-            }
-        }
-
+        // for (Enemy enemy: Maze.list_enemy){
+        //     if ((enemy.fx == super.fx) && (enemy.fy == super.fy)){
+        //         App.maze.remove(enemy.bx2, enemy.by2);
+        //     }
+        // }
     }
 
     

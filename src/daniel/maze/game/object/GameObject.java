@@ -117,8 +117,19 @@ public abstract class GameObject {
             case 1: fx++; fx2++; break;
             case 2: fy++; fy2++; break;
             case 3: fx--; fx2--; break;
-        }
         
+        
+        }
+      
+        
+        for (Enemy enemy: Maze.list_enemy){
+            Player player = Maze.list_player.get(0);
+            if ((enemy.fx == player.fx) && (enemy.fy == player.fy)){
+                App.maze.remove(enemy.bx2, enemy.by2);
+            }
+        }
+
+
     }
 
     /**

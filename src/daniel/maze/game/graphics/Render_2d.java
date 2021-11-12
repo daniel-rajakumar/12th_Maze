@@ -65,6 +65,8 @@ public class Render_2d {
         
     }
 
+    
+
 
     void modifyShift(){
             int x = Maze.list_player.get(0).getForegroundX() - GameObject.shift_x;
