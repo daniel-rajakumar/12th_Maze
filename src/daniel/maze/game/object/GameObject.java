@@ -117,9 +117,12 @@ public abstract class GameObject {
             case 1: fx++; fx2++; break;
             case 2: fy++; fy2++; break;
             case 3: fx--; fx2--; break;
-        
-        
         }
+
+
+
+
+
       
         // removeEnemyIfEaten();
     }
@@ -172,6 +175,10 @@ public abstract class GameObject {
     public int getY() { return y; }
     public int getForegroundX() { return fx; }
     public int getForegroundY() { return fy; }
+    public int getFx2() { return fx2; }
+    public int getFy2() { return fy2; }
+    public int getBx2() { return bx2; }
+    public int getBy2() { return by2; }
 
 }
 

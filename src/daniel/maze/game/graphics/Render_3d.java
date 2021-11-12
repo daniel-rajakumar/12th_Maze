@@ -33,7 +33,7 @@ public class Render_3d {
         int poly_x_1, poly_x_2, poly_x_3, poly_x_4;
         int poly_y_1, poly_y_2, poly_y_3, poly_y_4;
 
-        boolean left, right, dino;
+        boolean left, right;
 
 
         Player player = Maze.list_player.get(0);
@@ -122,44 +122,55 @@ public class Render_3d {
             // try { Thread.sleep(5000); } catch (Exception e) { }
         }
 
+        boolean dino = true;
         for (int i = 0; i < 5; i++){
-            GameObject obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
-
-            switch (player.getDirection()){
-                case 0: 
-                    obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() - i); 
-                    break; 
-
-                case 1: 
-                    obj_center = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY()); 
-                    break; 
-
-                case 2: 
-                    obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() + i); 
-                    break; 
-
-                case 3: 
-                    obj_center = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY()); 
-                    break; 
-            }
-
-            dino = (obj_center instanceof Enemy);
+            for (Enemy enemy: Maze.list_enemy) {
 
 
-            if (dino) {
-                BufferedImage img;
+                if ((enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() - i))
+                    System.out.printf("129: %s (%s == %s)(%s == %s)\n", i, 
+                                enemy.getFx(), player.getFx(), enemy.getFy(), player.getFy() - i);
+
+
+                switch (player.getDirection()){
+                    case 0: 
+                        // obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() - i); 
+                        dino = (enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() - i);
+                        break; 
+
+                    case 1: 
+                        // obj_center = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY()); 
+                        dino = (enemy.getFx() == player.getFx() + i && enemy.getFy() == player.getFy());
+                        break; 
+
+                    case 2: 
+                        // obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() + i); 
+                        dino = (enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() + i);
+                        break; 
+
+                    case 3: 
+                        // obj_center = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY()); 
+                        dino = (enemy.getFx() == player.getFx()  - i && enemy.getFy() == player.getFy());
+                        break; 
+                }
+
+
+
+            if (dino){
+                System.out.println("153: " + dino);
+                
                 try {
-                    img = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
-                    int y = 350 + shrink - (shrink/2);
+                    BufferedImage img = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
                     int x = 250 + (shrink/2) * i;
-                    int size = 300 - shrink*i; 
-                    System.out.println("y: " + y);
+                    int y = 350 + shrink - (shrink/2);
+                    int size = 300 - shrink * i; 
                     Render.graphics.drawImage(img, x, y, size, size, null);
                 } catch (IOException e) { e.printStackTrace(); }
-
             }
-        }
+            }
 
+
+        }
     }
 
 
