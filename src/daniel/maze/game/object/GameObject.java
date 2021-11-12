@@ -121,15 +121,16 @@ public abstract class GameObject {
         
         }
       
-        
-        for (Enemy enemy: Maze.list_enemy){
+        removeEnemyIfEaten();
+    }
+
+    private void removeEnemyIfEaten(){
+        for (Enemy enemy: Maze.list_enemy) {
             Player player = Maze.list_player.get(0);
             if ((enemy.fx == player.fx) && (enemy.fy == player.fy)){
                 App.maze.remove(enemy.bx2, enemy.by2);
             }
         }
-
-
     }
 
     /**
