@@ -35,7 +35,7 @@ public class GamePanel extends JPanel  {
         frame.setVisible(true);
 
         try {
-            startRepaint(10); //start a new threat with 10 milliSeconds call
+            startRepaint(1); //start a new threat with 10 milliSeconds call
             render = new Render(new Render_2d(), new Render_3d());
         } catch (Exception e) { e.printStackTrace(); }
     }

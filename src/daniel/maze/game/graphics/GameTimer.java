@@ -1,9 +1,11 @@
 package daniel.maze.game.graphics;
 
+import java.awt.Color;
 import java.awt.Font;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import daniel.maze.game.App;
 import daniel.maze.game.maze.Maze;
 import daniel.maze.game.object.GameObject;
 
@@ -25,9 +27,18 @@ public class GameTimer {
 
     public void draw(){
         Render.graphics.setFont(new Font("TimesRoman", Font.PLAIN, GameObject.PIXEL_SIZE));
-        // String str = "dino: " + Maze.list_enemy.size();
         String str = "Timer: " + sec + "   Dino: " + Maze.list_enemy.size();
-        Render.graphics.drawString(str, 0, GameObject.PIXEL_SIZE - 5);
+
+        if (App.maze.getIs3D()){
+            Render.graphics.setColor(Color.WHITE);
+        } else {
+            Render.graphics.setColor(Color.BLACK);
+        }
+
+
+
+        // String str = "dino: " + Maze.list_enemy.size();
+        Render.graphics.drawString(str, 10, GameObject.PIXEL_SIZE - 5);
     }
     
 }

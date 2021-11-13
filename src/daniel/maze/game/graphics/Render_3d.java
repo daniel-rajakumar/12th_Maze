@@ -120,6 +120,7 @@ public class Render_3d {
             renderObjects_outline(left, right);
 
             // try { Thread.sleep(5000); } catch (Exception e) { }
+
         }
 
         boolean dino = true;
@@ -146,6 +147,8 @@ public class Render_3d {
             }
 
         }
+
+        Maze.timer.draw();
 
     }
 
