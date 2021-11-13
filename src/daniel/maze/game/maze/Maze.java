@@ -32,8 +32,16 @@ public class Maze {
     public static ArrayList<Water> list_water;
     public static GameTimer timer;
 
+    private static int currentLevel = 0;
+    private String[] levels = {
+        "res/level/level_0.txt",
+        "res/level/level_1.txt",
+        "res/level/level_2.txt",
+        // "res/level/level_3.txt",
+    };
 
-    public Maze() throws Exception {
+    public Maze(int level) throws Exception {
+        this.file = levels[level];
         list_enemy = new ArrayList<>();
         list_finish = new ArrayList<>();
         list_grass = new ArrayList<>();
@@ -52,6 +60,17 @@ public class Maze {
         for (int i = 0; i < height; i++){
             char_map[i] = input.readLine().toCharArray();
         }
+
+    }
+
+    public void nextLevel(){
+        if (currentLevel == levels.length) currentLevel = -1;
+
+        try {
+            App.maze = new Maze(++currentLevel);
+            App.maze.setupLevel();
+            GameTimer.timer.cancel();
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
 

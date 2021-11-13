@@ -11,6 +11,7 @@ import daniel.maze.game.object.GameObject;
 
 public class GameTimer {
     public static int sec;
+    public static Timer timer;
 
     public GameTimer(int sec){
         GameTimer.sec = sec;
@@ -18,7 +19,8 @@ public class GameTimer {
     }
 
     public void startCountdown(){
-        new Timer().schedule(new TimerTask() {
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
             public void run() {
                 sec--;
             }
@@ -35,10 +37,20 @@ public class GameTimer {
             Render.graphics.setColor(Color.BLACK);
         }
 
-
+        checkWin();
 
         // String str = "dino: " + Maze.list_enemy.size();
         Render.graphics.drawString(str, 10, GameObject.PIXEL_SIZE - 5);
     }
+
+    public void checkWin(){
+        if (sec > 0 && Maze.list_enemy.size() == 0){
+            try {
+                App.maze.nextLevel();
+            } catch (Exception e) { e.printStackTrace(); } 
+        }
+    }
+
+
     
 }

@@ -15,7 +15,7 @@ public class App {
 
     App() throws Exception {
         panel = new GamePanel();
-        maze = new Maze(); 
+        maze = new Maze(0); 
         maze.setupLevel();
     }
 
