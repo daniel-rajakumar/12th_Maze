@@ -74,7 +74,7 @@ public abstract class GameObject {
 	}
 
 
-    public BufferedImage rotate(BufferedImage img, int deg) {
+    public static BufferedImage rotate(BufferedImage img, int deg) {
         int imgWidth =  img.getWidth();
         int imgHeight = img.getHeight();
         int imgType =   img.getType();
@@ -124,7 +124,7 @@ public abstract class GameObject {
 
 
       
-        // removeEnemyIfEaten();
+        removeEnemyIfEaten();
     }
 
     private void removeEnemyIfEaten(){

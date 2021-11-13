@@ -123,54 +123,30 @@ public class Render_3d {
         }
 
         boolean dino = true;
-        for (int i = 0; i < 5; i++){
-            for (Enemy enemy: Maze.list_enemy) {
-
-
-                if ((enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() - i))
-                    System.out.printf("129: %s (%s == %s)(%s == %s)\n", i, 
-                                enemy.getFx(), player.getFx(), enemy.getFy(), player.getFy() - i);
-
+        for (Enemy enemy: Maze.list_enemy) {
+            enemy.drawFg();
+            for (int i = 0; i < 5; i++){
 
                 switch (player.getDirection()){
-                    case 0: 
-                        // obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() - i); 
-                        dino = (enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() - i);
-                        break; 
-
-                    case 1: 
-                        // obj_center = App.maze.whatIsIn(player.getForegroundX() + i, player.getForegroundY()); 
-                        dino = (enemy.getFx() == player.getFx() + i && enemy.getFy() == player.getFy());
-                        break; 
-
-                    case 2: 
-                        // obj_center = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY() + i); 
-                        dino = (enemy.getFx() == player.getFx() && enemy.getFy() == player.getFy() + i);
-                        break; 
-
-                    case 3: 
-                        // obj_center = App.maze.whatIsIn(player.getForegroundX() - i, player.getForegroundY()); 
-                        dino = (enemy.getFx() == player.getFx()  - i && enemy.getFy() == player.getFy());
-                        break; 
+                    case 0: dino = (enemy.getFx() == player.getFx()     && enemy.getFy() == player.getFy() - i); break; 
+                    case 1: dino = (enemy.getFx() == player.getFx() + i && enemy.getFy() == player.getFy()    ); break; 
+                    case 2: dino = (enemy.getFx() == player.getFx()     && enemy.getFy() == player.getFy() + i); break; 
+                    case 3: dino = (enemy.getFx() == player.getFx() - i && enemy.getFy() == player.getFy()    ); break; 
                 }
 
-
-
-            if (dino){
-                System.out.println("153: " + dino);
-                
-                try {
-                    BufferedImage img = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
-                    int x = 250 + (shrink/2) * i;
-                    int y = 350 + shrink - (shrink/2);
-                    int size = 300 - shrink * i; 
-                    Render.graphics.drawImage(img, x, y, size, size, null);
-                } catch (IOException e) { e.printStackTrace(); }
+                if (dino){
+                    try {
+                        BufferedImage img = ImageIO.read(new File(App.PATH_IMG + "dino.png"));
+                        int x = 250 + (shrink/2) * i;
+                        int y = 350 + shrink - (shrink/2);
+                        int size = 300 - shrink * i; 
+                        Render.graphics.drawImage(GameObject.rotate(img, 0), x, y, size, size, null);
+                    } catch (IOException e) { e.printStackTrace(); }
+                }
             }
-            }
-
 
         }
+
     }
 
 
