@@ -37,7 +37,6 @@ public class Maze {
         "res/level/level_0.txt",
         "res/level/level_1.txt",
         "res/level/level_2.txt",
-        "res/level/level_3.txt",
     };
 
     public Maze(int level) throws Exception {
@@ -104,9 +103,8 @@ public class Maze {
         System.out.println("99: " + currentLevel);
         switch (currentLevel) {
             case 0: timer = new GameTimer(20); break;
-            case 1: timer = new GameTimer(30); break;
-            case 2: timer = new GameTimer(40); break;
-            case 3: timer = new GameTimer(600); break;
+            case 1: timer = new GameTimer(60); break;
+            case 2: timer = new GameTimer(600); break;
             default: timer = new GameTimer(Integer.MAX_VALUE);
         }
     }
