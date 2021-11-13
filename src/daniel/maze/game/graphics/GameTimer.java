@@ -44,11 +44,10 @@ public class GameTimer {
     }
 
     public void checkWin(){
-        if (sec > 0 && Maze.list_enemy.size() == 0){
-            try {
-                App.maze.nextLevel();
-            } catch (Exception e) { e.printStackTrace(); } 
-        }
+        try {
+            if (sec > 0 && Maze.list_enemy.size() == 0) App.maze.nextLevel();
+            if (sec < 0 && Maze.list_enemy.size() != 0) App.maze.youLost();
+        } catch (Exception e) { e.printStackTrace(); } 
     }
 
 
