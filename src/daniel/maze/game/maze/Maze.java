@@ -41,7 +41,10 @@ public class Maze {
     };
 
     public Maze(int level) throws Exception {
-        this.file = levels[level];
+        if (level == -1) this.file =  "res/level/level_won.txt";
+        else if (level == -2) this.file =  "res/level/level_lost.txt";
+        else this.file = levels[level];
+
         list_enemy = new ArrayList<>();
         list_finish = new ArrayList<>();
         list_grass = new ArrayList<>();
@@ -64,13 +67,25 @@ public class Maze {
     }
 
     public void nextLevel(){
-        if (currentLevel == levels.length) currentLevel = -1;
-
         try {
+            if (currentLevel == levels.length - 1) {youWon(); return;}
+
             App.maze = new Maze(++currentLevel);
             App.maze.setupLevel();
             GameTimer.timer.cancel();
         } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    public void youWon(){
+        try {
+            App.maze = new Maze(-1);
+            App.maze.setupLevel();
+            GameTimer.timer.cancel();
+        } catch (Exception e) { e.printStackTrace(); }
+    }
+
+    public void youLost(){
+
     }
 
 
