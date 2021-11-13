@@ -72,7 +72,6 @@ public class Enemy extends GameObject {
             turnIfNeeded();
             
 
-            System.out.println("73: moving! " + count);
 
         }
 

@@ -78,14 +78,6 @@ public class Render_3d {
             door_right = new Rectangle(poly_y_3, poly_x_2, shrink, (poly_y_3 - poly_x_3));
 
 
-            // System.out.printf("player: [x: %s][y: %s]\n", player.getX(), player.getY());
-            // System.out.printf("water: [x: %s][y: %s]\n", water.getX(), water.getY());
-
-
-
-
-            // System.out.println("front: " + App.maze.whatIsIn(player.getX(), player.getY() - 1).getClass().getSimpleName());
-
             GameObject obj_front = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
             GameObject obj_left = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
             GameObject obj_right = App.maze.whatIsIn(player.getForegroundX(), player.getForegroundY());
@@ -114,12 +106,8 @@ public class Render_3d {
             left  = !(obj_left  instanceof Water || obj_left  == null);
             right = !(obj_right instanceof Water || obj_right == null);
 
-            // System.out.printf("122: renderCount: %s\n", Render.count);
-
             renderObjects(left, right);
             renderObjects_outline(left, right);
-
-            // try { Thread.sleep(5000); } catch (Exception e) { }
 
         }
 

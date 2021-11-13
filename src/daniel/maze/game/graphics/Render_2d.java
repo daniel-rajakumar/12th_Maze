@@ -20,30 +20,9 @@ public class Render_2d {
         try {
 
 
-            // int x = Maze.list_player.get(0).getForegroundX() - Maze.list_player.get(0).getX();
-            // int y = Maze.list_player.get(0).getForegroundY() - Maze.list_player.get(0).getY();
-            // int x = Maze.list_player.get(0).getX() - Maze.list_player.get(0).getForegroundX();
-            // int y = Maze.list_player.get(0).getY() - Maze.list_player.get(0).getForegroundY();
-
-
-            // System.out.println("59: " + App.panel.getInsets().right);
-
-            
-            // int x1 = Maze.list_enemy.get(0).getFx();
-            // int y1 = Maze.list_enemy.get(0).getFy();
-            // int x2 = Maze.list_player.get(0).getFx();
-            // int y2 = Maze.list_player.get(0).getFy();
-            // System.out.printf("33: dino: (%s, %s) | me: (%s, %s)\n", x1, y1, x2, y2);
-
-            
-
             modifyShift();
 
 
-            System.out.printf("43 -> (x: %s, y: %s)\n", GameObject.shift_x, GameObject.shift_y);
-            
-
-            
             for (int i = 0; i < App.maze.getMap().length; i++){
                 for (int j = 0; j < App.maze.getMap()[i].length; j++){
                     App.maze.getObj_map()[i][j].shift();

@@ -36,7 +36,7 @@ public class Maze {
     private String[] levels = {
         "res/level/level_0.txt",
         "res/level/level_1.txt",
-        // "res/level/level_2.txt",
+        "res/level/level_2.txt",
     };
 
     public Maze(int level) throws Exception {
@@ -100,7 +100,6 @@ public class Maze {
             }
         }
 
-        System.out.println("99: " + currentLevel);
         switch (currentLevel) {
             case 0: timer = new GameTimer(20); break;
             case 1: timer = new GameTimer(60); break;
@@ -143,7 +142,6 @@ public class Maze {
         x -= GameObject.shift_x;
         y -= GameObject.shift_y;
         if (x >= width || y >= height || x < 0 || y < 0) {
-            System.out.println("out of bounce!");
             return null;
         }
 
