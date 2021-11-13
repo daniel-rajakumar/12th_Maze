@@ -36,7 +36,7 @@ public class Maze {
     private String[] levels = {
         "res/level/level_0.txt",
         "res/level/level_1.txt",
-        "res/level/level_2.txt",
+        // "res/level/level_2.txt",
         // "res/level/level_3.txt",
     };
 
@@ -44,6 +44,7 @@ public class Maze {
         if (level == -1) this.file =  "res/level/level_won.txt";
         else if (level == -2) this.file =  "res/level/level_lost.txt";
         else this.file = levels[level];
+        currentLevel = level;
 
         list_enemy = new ArrayList<>();
         list_finish = new ArrayList<>();
@@ -68,9 +69,9 @@ public class Maze {
 
     public void nextLevel(){
         try {
-            if (currentLevel == levels.length - 1) {youWon(); return;}
-
-            App.maze = new Maze(++currentLevel);
+            currentLevel++;
+            if (currentLevel == levels.length) {youWon(); return;}
+            App.maze = new Maze(currentLevel);
             App.maze.setupLevel();
             GameTimer.timer.cancel();
         } catch (Exception e) { e.printStackTrace(); }
@@ -85,7 +86,11 @@ public class Maze {
     }
 
     public void youLost(){
-
+        try {
+            App.maze = new Maze(-2);
+            App.maze.setupLevel();
+            GameTimer.timer.cancel();
+        } catch (Exception e) { e.printStackTrace(); }
     }
 
 
@@ -96,7 +101,14 @@ public class Maze {
             }
         }
 
-        timer = new GameTimer(60);
+        System.out.println("99: " + currentLevel);
+        switch (currentLevel) {
+            case 0: timer = new GameTimer(20); break;
+            case 1: timer = new GameTimer(30); break;
+            case 2: timer = new GameTimer(40); break;
+            case 3: timer = new GameTimer(60); break;
+            default: timer = new GameTimer(Integer.MAX_VALUE);
+        }
     }
 
 
