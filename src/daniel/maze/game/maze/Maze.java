@@ -36,7 +36,7 @@ public class Maze {
     private String[] levels = {
         "res/level/level_0.txt",
         "res/level/level_1.txt",
-        "res/level/level_2.txt",
+        // "res/level/level_2.txt",
     };
 
     public Maze(int level) throws Exception {
