@@ -1,18 +1,24 @@
-## Getting Started
+# Addons:
+1) `Multiple Levels` (Including win and lost place)
+2) `Moving Objects` (enemies)
+3) `Map Follows the Player in 2D Maze` - If this addon does not count because this won't affect the 3D maze in any way, then: `Level Countdown`
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
 
-## Folder Structure
+<br> <br> <br>
 
-The workspace contains two folders by default, where:
+# NOTE
+    This is not a bug in my opinion but I will note it: Enemy should be on the same tile as Player. Sometimes while player moving, you could miss the enemy because the player and the enemy moved to the different tile at the same time. 
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+    example:
+        frame 1:
+            Player (0, 4)
+            Enemy (0, 5)
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+        frame 2:
+            Player (0, 5)
+            Enemy (0, 4)
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+        In this case both never reached the same tile, hence the enemy was not captured. 
 
-## Dependency Management
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+
