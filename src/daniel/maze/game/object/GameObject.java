@@ -22,6 +22,7 @@ public abstract class GameObject {
     protected BufferedImage backgroundImage, foregroundImage;
     protected int direction;
     public static int shift_x, shift_y;
+    private int stepCount;
 
     GameObject(int x, int y, String backgroundFile){
         this(x, y, null, backgroundFile);
@@ -41,6 +42,8 @@ public abstract class GameObject {
         this.fy2 = y;
         this.bx2 = x;
         this.by2 = y;
+
+        stepCount = 0;
 
         try {
             this.backgroundImage = ImageIO.read(new File(App.PATH_IMG + backgroundFile));
@@ -112,6 +115,9 @@ public abstract class GameObject {
     public void moveForward(){
         if (!canMoveForward()) return;
 
+
+        stepCount++;
+
         switch (direction){
             case 0: fy--; fy2--; break;
             case 1: fx++; fx2++; break;
@@ -179,6 +185,7 @@ public abstract class GameObject {
     public int getFy2() { return fy2; }
     public int getBx2() { return bx2; }
     public int getBy2() { return by2; }
+    public int getStepCount() { return stepCount; }
 
 }
 

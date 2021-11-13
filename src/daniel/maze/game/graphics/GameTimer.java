@@ -29,7 +29,7 @@ public class GameTimer {
 
     public void draw(){
         Render.graphics.setFont(new Font("TimesRoman", Font.PLAIN, GameObject.PIXEL_SIZE));
-        String str = "Timer: " + sec + "   Dino: " + Maze.list_enemy.size();
+        String str = "Timer: " + sec + "   Dino: " + Maze.list_enemy.size() + "   Steps: " + Maze.list_player.get(0).getStepCount();
 
         if (App.maze.getIs3D()){
             Render.graphics.setColor(Color.WHITE);
